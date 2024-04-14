@@ -1,2 +1,3 @@
-# A_course_R_programming
+# Programación Estadística con R
+
 Curso de programación con R para análisis de datos.
