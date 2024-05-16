@@ -1,4 +1,7 @@
 ## Personalizar el aspecto de un gráfico
+```r
+ggplot(data=mtcars)
+```
 ## Facetas de
 ## Otros sistemas gráficos
 ## El paquete lattice
