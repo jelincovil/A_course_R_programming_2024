@@ -1,10 +1,10 @@
 ## Personalizar el aspecto de un gráfico
--- ggtitle
--- xlab y ylab.
--- theme()
--- scale()
--- annotate()
--- windWin80: un conjunto de datos de *R*.
+- ggtitle
+- xlab y ylab.
+- theme()
+- scale()
+- annotate()
+- windWin80: un conjunto de datos de *R*.
 
 Data from the MPV package contains pairs of observations of wind speed at the Winnipeg International Airport. The columns
 give the wind speed in km per hour at midnight (h0) and noon (h12).
