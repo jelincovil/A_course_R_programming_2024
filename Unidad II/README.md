@@ -4,6 +4,7 @@
 - theme()
 - scale()
 - annotate()
+- geom_jitter()
 - windWin80: un conjunto de datos de *R*.
 
 Data from the MPV package contains pairs of observations of wind speed at the Winnipeg International Airport. The columns
@@ -98,6 +99,33 @@ pushViewport(vp) # create new viewport nested in previous viewport,
 # and width 60% of previous viewport.
 grid.rect(gp = gpar(col = "blue"))
 ```
+
+# Creación de funciones que automatizan el trabajo.
+
+## Función para variable categorica
+
+## Función para dos variables categoricas.
+
+## Referencia sobre Programación funcional en R
+
+Programación funcional R, en esencia, es un lenguaje de programación funcional (FP). Esto significa que proporciona muchas herramientas para la creación y manipulación de funciones. En particular, R tiene lo que se conoce como funciones de primera clase. Puedes hacer cualquier cosa con funciones que puedas hacer con vectores: puedes asignarlas a variables, almacenarlas en listas, pasarlas como argumentos a otras funciones, crearlas dentro de funciones e incluso devolverlas como resultado de una función.
+
+Comienzamos mostrando un ejemplo motivador, eliminando la redundancia y la duplicación en el código utilizado para limpiar y resumir datos. Luego aprenderá sobre los tres componentes básicos de la programación funcional: funciones anónimas, cierres (funciones escritas por funciones) y listas de funciones. Estas piezas se entrelazan en la conclusión que muestra cómo construir un conjunto de herramientas para la integración numérica, a partir de primitivas muy simples. Este es un tema recurrente en FP: comenzar con bloques de construcción pequeños y fáciles de entender, combinarlos en estructuras más complejas y aplicarlos con confianza.
+
+La discusión sobre la programación funcional continúa en los dos capítulos siguientes: funcionales explora funciones que toman funciones como argumentos y devuelven vectores como salida, y operadores de funciones explora funciones que toman funciones como entrada y las devuelven como salida.
+
+- Describir. La motivación motiva la programación funcional utilizando un problema común: limpiar y resumir datos antes de un análisis serio.
+
+- Funciones anónimas le muestra un lado de las funciones que quizás no conocía: puede usar funciones sin darles un nombre.
+
+- Cierres introduce el cierre, una función escrita por otra función. Un cierre puede acceder a sus propios argumentos y variables definidas en su padre.
+
+- Listas de funciones muestra cómo colocar funciones en una lista y explica por qué podría interesarle.
+
+- La integración numérica concluye el capítulo con un estudio de caso que utiliza funciones anónimas, cierres y listas de funciones para construir un conjunto de herramientas flexible para la integración numérica.
+
+Referencia: http://adv-r.had.co.nz/Functional-programming.html
+
 
 ## Referencias
 - Introduction to Scientific Programming and Simulation Using R: https://nyu-cdsc.github.io/learningr/assets/simulation.pdf
