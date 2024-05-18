@@ -126,6 +126,104 @@ La discusión sobre la programación funcional continúa en los dos capítulos s
 
 Referencia: http://adv-r.had.co.nz/Functional-programming.html
 
+## Ejemplo de verificación paso a peso de una función
+
+```r
+data(mtcars)
+
+# Step by step
+df = mtcars
+colores = viridis(10)[4:6]
+variable = "cyl"
+
+c1 <- colores[1] ; c2 <- colores[2] ; c3 <- colores[3] # sacar los colores en 3 caracteres
+
+c(c1,c2,c3)
+
+grupo <- names(table(df[, variable]))
+
+n <- as.vector(table(df[, variable]))
+
+as.vector(table(df[, variable]))
+length(df[, variable])
+
+
+prop <- as.vector(table(df[, variable]))/length(df[, variable])
+
+
+count.data <- data.frame(
+  grupo = names(table(df[, variable])),
+  n = as.vector(table(df[, variable])),
+  prop = round(n/length(df[, variable])*100, 3)
+)
+
+count.data
+
+help(arrange)
+
+count.data <- count.data %>%
+  arrange(desc(grupo)) %>%
+  mutate(lab.ypos = cumsum(prop) - 0.5*prop)
+
+count.data
+
+g1 <- ggplot(count.data, aes(x = grupo, y=n ) ) +
+  geom_bar(stat="identity", width= 1, fill= c1 , 
+           color = c2, alpha=2.5) +
+  geom_text(aes(label = n, y = n + 1), color = "black",
+            position = position_dodge(width = 1)) +
+  ggtitle(paste("Gráfico de barras para", variable)) +
+  xlab(variable) + 
+  ylab(paste("Número de casos por", variable))+
+  theme(panel.background = element_rect(fill = c3, 
+                                        colour = c3, size = 2, linetype = "solid"))
+g1
+
+# abro llaves
+c1 <- colores[1] ; c2 <- colores[2] ; c3 <- colores[3] # sacar los colores en 3 caracteres
+
+grupo <- names(table(df[, variable]))
+n <- as.vector(table(df[, variable]))
+prop <- as.vector(table(df[, variable]))/length(df[, variable])
+
+count.data <- data.frame(
+  grupo = names(table(df[, variable])),
+  n = as.vector(table(df[, variable])),
+  prop = round(n/length(df[, variable])*100, 3)
+)
+
+count.data <- count.data %>%
+  arrange(desc(grupo)) %>%
+  mutate(lab.ypos = cumsum(prop) - 0.5*prop)
+
+g1 <- ggplot(count.data, aes(x = grupo, y=n ) ) +
+  geom_bar(stat="identity", width= 1, fill= c1 , 
+           color = c2, alpha=2.5) +
+  geom_text(aes(label = n, y = n + 1), color = "black",
+            position = position_dodge(width = 1)) +
+  ggtitle(paste("Gráfico de barras para", variable)) +
+  xlab(variable) + 
+  ylab(paste("Número de casos por", variable))+
+  theme(panel.background = element_rect(fill = c3, 
+                                        colour = c3, size = 2, linetype = "solid"))
+
+
+g2 <- ggplot(count.data, aes(x = "", y = prop)) +
+  geom_bar(width = 1, stat = "identity", fill= c1, 
+           color = c2, alpha=2.5) +
+  coord_polar("y", start = 0)+
+  geom_text(aes(y = lab.ypos, label = prop), color = "white")+
+  ggtitle(paste("Gráfico de torta (%) para", variable)) +
+  theme(panel.background = element_rect(fill = c3, 
+                                        colour = c3, size = 2, linetype = "solid"))
+
+g2
+
+ggarrange(g1, g2, 
+           labels = c("A", "B"),
+           ncol = 2, nrow = 1)
+
+```
 
 ## Referencias
 - Introduction to Scientific Programming and Simulation Using R: https://nyu-cdsc.github.io/learningr/assets/simulation.pdf
