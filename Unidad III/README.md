@@ -95,29 +95,29 @@ Fibonacci
 
 ```r
 ```
+### el loop *repeat* y el *break* y proximos declaraciones
 
-### El método de Newton para encontrar la solución (raíz) de una ecuación
 Syntax
 ```r
 repeat { statements } if (condition) break
 ```
 
 ```r
+x <- x0
+tolerance <- 0.000001
+repeat {
+f <- xˆ3 + 2 * xˆ2 - 7
+if (abs(f) < tolerance) break
+f.prime <- 3 * xˆ2 + 4 * x
+x <- x - f / f.prime
+}
+x
 ```
 
 ```r
 ```
 
-### Las instrucciones *repeat*, *break* y *next*
 
-```r
-```
-
-```r
-```
-
-```r
-```
 
 ## *GESTION DE LA COMPLEJIDAD ATRAVEZ DE FUNCIONES*
 ```r
