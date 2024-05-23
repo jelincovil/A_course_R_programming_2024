@@ -12,6 +12,7 @@ para llegar allí.
 
 ##  **Control del flujo "flow" DETERMINISTA**
 
+```mermaid
 graph TD
 A[Inicio] --> B{¿Bucle for?}
 B --> C{Sí} --> D[Ejecutar bloque de código]
@@ -24,6 +25,7 @@ H --> I{Sí} --> D
 H --> F
 I --> G
 F --> J[Fin]
+```
 
 **Explicación del diagrama:**
 
