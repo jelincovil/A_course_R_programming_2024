@@ -1,6 +1,8 @@
 
 # Unidad III:   Programando con R
 
+# Clase del sábado 28-05-2024
+
 La programación implica escribir sistemas de instrucciones relativamente complejos.
 Hay dos estilos amplios de programación: el estilo **imperativo** implica encadenar 
 instrucciones que le dicen a la computadora
@@ -10,6 +12,35 @@ para llegar allí.
 
 ##  **Control del flujo "flow" DETERMINISTA**
 
+graph TD
+A[Inicio] --> B{¿Bucle for?}
+B --> C{Sí} --> D[Ejecutar bloque de código]
+D --> E{¿Continuar?}
+E --> C
+B --> F{No} --> G[Ejecutar bloque de código while]
+H{¿Condición?}
+G --> H
+H --> I{Sí} --> D
+H --> F
+I --> G
+F --> J[Fin]
+
+**Explicación del diagrama:**
+
+* El diagrama comienza en el nodo **A (Inicio)**.
+* Desde **A**, hay una pregunta que decide si se debe usar un bucle **for** o un bucle **while**.
+* Si la respuesta a la pregunta es **sí** (nodo **B**), el flujo pasa al nodo **C (Ejecutar bloque de código)**.
+* Dentro del bucle **for**, el bloque de código se ejecuta (nodo **D**).
+* Luego, hay otra pregunta que decide si se debe continuar con el bucle (nodo **E**).
+* Si la respuesta es **sí**, el flujo vuelve al nodo **C** para ejecutar el bloque de código nuevamente.
+* Si la respuesta es **no**, el flujo sale del bucle **for** y pasa al nodo **F (No)**.
+* Si la respuesta a la pregunta inicial (nodo **B**) es **no**, el flujo pasa directamente al nodo **G (Ejecutar bloque de código while)**.
+* Dentro del bucle **while**, el bloque de código se ejecuta (nodo **D**).
+* Luego, la condición del bucle se evalúa en el nodo **H (¿Condición?)**.
+* Si la condición es **sí**, el flujo vuelve al nodo **G** para ejecutar el bloque de código nuevamente.
+* Si la condición es **no**, el flujo sale del bucle **while** y pasa al nodo **F (No)**.
+* Finalmente, el flujo termina en el nodo **J (Fin)**.
+* 
 ### El loop *for ( )*
 
 Calculo de un factorial:
@@ -120,19 +151,69 @@ x
 
 
 ## *GESTION DE LA COMPLEJIDAD ATRAVEZ DE FUNCIONES*
-```r
-```
 
-```r
-```
+La mayoría de los programas informáticos reales son mucho más largos que los ejemplos que damos en este libro. La mayoría de las personas no pueden tener todos los detalles en la cabeza a la vez, por lo que es extremadamente importante encontrar formas de reducir la complejidad. A lo largo de los años se han desarrollado diversas estrategias de diseño de programas. En esta sección damos un breve resumen de algunas de las estrategias que nos han funcionado.
 
-```r
-```
+Las funciones son unidades autónomas de código R con un propósito bien definido. En general, las funciones toman entradas, hacen cálculos (posiblemente imprimiendo resultados intermedios, dibujando gráficos, llamando a otras funciones, etc.) y producen resultados. Si las entradas y salidas están bien definidas, el programador puede estar razonablemente seguro de si la función funciona o no: y una vez que funciona, puede pasar al siguiente problema.
+
+
 
 ### ¿Qué son las funciones?
-### Alcance de las variables
+Sintaxis
+```r
+func_name <- function (parameters) {
+statement
+}
+```
+
+```r
+annuityAmt <- function(n, R, i) {
+R*((1 + i)ˆn - 1) / i
+}
+annuityAmt(10, 400, 0.05)
+```
+
+```r
+# define a function to compute power
+power <- function(a = 2, b) {
+    print(paste("a raised to the power b is: ", a^b))
+}
+
+# call the power function with arguments
+power(2, 3)
+
+# call function with default arguments
+power(b=3)
+```
+
+```r
+# define a function to compute power
+power <- function(a, b) {
+    return (a^b)
+}
+
+# call the power function with arguments
+print(paste("a raised to the power b is: ", power(2, 3)))
+```
+
+
+
 ### Devolución de varios objetos
+
+```r
+annuityValues <- function(n, R, i) {
+amount <- R*((1 + i)ˆn - 1) / i
+PV <- amount * (1 + i)ˆ(-n)
+list(amount = amount, PV = PV)
+}
+annuityValues(10, 400, 0.05)
+```
+
+
 ### Uso de clases de S3 para controlar la impresión
+
+# Clase del martes 28-05-2024
+
 ### El operador %>% del paquete *magrittr*
 ###  La función *replicate ( )*
 
