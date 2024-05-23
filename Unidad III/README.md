@@ -1,7 +1,9 @@
 
 # Unidad III:   Programando con R
 
-##  Control del flujo "flow"
+## *LOOPS DETERMINISTAS*
+
+###  Control del flujo "flow"
 
 ### El loop *for ( )*
 ### El condicionador *if (  )*
@@ -12,7 +14,7 @@
 
 ### Las instrucciones *repeat*, *break* y *next*
 
-## Gestión de la complexidad atravez de funciones
+## *GESTION DE LA COMPLEJIDAD ATRAVEZ DE FUNCIONES*
 
 ### ¿Qué son las funciones?
 ### Alcance de las variables
@@ -21,7 +23,7 @@
 ### El operador %>% del paquete *magrittr*
 ###  La función *replicate ( )*
 
-## Consejos de programación miscelánea
+## *Consejos de programación miscelánea*
 
 ### Edite siempre el código en el editor, no en la consola
 
@@ -33,7 +35,7 @@
 
 ### Diseño de arriba hacia abajo
 
-## Depuración y mantenimiento
+## *Depuración y mantenimiento*
 
 ### Reconociendo errores
 
@@ -51,7 +53,7 @@
 
 ### Depuración de los operadores %>% magrittr
 
-## Programación eficiente
+## *Programación eficiente*
 
 ### Aprende tus herramientas
 
@@ -63,7 +65,7 @@
 
 ### Optimice con cuidado
 
-## Referencias
+## *Referencias*
 1.  Introduction  to  Scientific  Programming and Simulation  Using R: [https://nyu-cdsc.github.io/learningr/assets/simulation.pdf](https://nyu-cdsc.github.io/learningr/assets/simulation.pdf)
 2.  Advanced R: [https://adv-r.hadley.nz/](https://adv-r.hadley.nz/)
 
