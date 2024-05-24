@@ -5,8 +5,7 @@
 
 La programación implica escribir sistemas de instrucciones relativamente complejos.
 Hay dos estilos amplios de programación: el estilo **imperativo** implica encadenar 
-instrucciones que le dicen a la computadora
-qué hacer. El estilo **declarativo** implica
+instrucciones que le dicen a la computadora qué hacer. El estilo **declarativo** implica
 escribir una descripción del resultado final, sin dar detalles sobre cómo
 para llegar allí.
 
