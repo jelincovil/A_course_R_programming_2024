@@ -13,7 +13,7 @@ para llegar allí.
 
 ```mermaid
 graph TD
-A[Inicio] --> B{¿Bucle for?}
+A[Inicio] --> B{Condición del input}
 B --> C{Sí} --> D[Ejecutar bloque de código]
 D --> E{¿Continuar?}
 E --> C
@@ -127,7 +127,7 @@ Fibonacci
 
 ```r
 ```
-### el loop *repeat* y el *break* y proximos declaraciones
+### El loop *repeat* y el *break* y proximos declaraciones
 
 Syntax
 ```r
@@ -160,6 +160,9 @@ Las funciones son unidades autónomas de código R con un propósito bien defini
 
 
 ### ¿Qué son las funciones?
+
+En el análisis de datos, podrías definir funciones para realizar tareas comunes como la limpieza de datos, la transformación de datos, o el ajuste de modelos. Por ejemplo, aquí hay una función que podría usar para calcular la media de una columna en un dataframe:
+
 Sintaxis
 ```r
 func_name <- function (parameters) {
