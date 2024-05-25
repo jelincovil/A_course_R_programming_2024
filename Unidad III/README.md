@@ -1,4 +1,3 @@
-
 # Unidad III:   Programando con R
 
 # Clase del sábado 28-05-2024
@@ -202,7 +201,7 @@ print(paste("a raised to the power b is: ", power(2, 3)))
 
 
 
-### Devolución de varios objetos
+### Devolución de varios objetos en listas
 
 ```r
 annuityValues <- function(n, R, i) {
@@ -213,9 +212,34 @@ list(amount = amount, PV = PV)
 annuityValues(10, 400, 0.05)
 ```
 
-
 ### Uso de clases de S3 para controlar la impresión
 
+Una solución general a este problema es declarar el tipo de valor de retorno y decirle a R cómo imprimir cosas así. Este es un tipo de programación orientada a objetos. De hecho, hay varias formas de hacer esto y una discusión completa está más allá del alcance de este texto, pero en esta sección mostraremos una de las formas más simples: usar métodos S3.
+
+Además de tener valores, los objetos en R pueden tener atributos con nombre. La clase S3 es (en el caso más simple) una cadena de caracteres llamada clase que contiene la clase del objeto.
+
+```r
+annuityValues <- function(n, R, i) {
+amount <- R*((1 + i)ˆn - 1) / i
+PV <- amount * (1 + i)ˆ(-n)
+list(amount = amount, PV = PV)
+}
+# Aplicar la función
+annuityValues(10, 400, 0.05)
+
+values <- annuityValues(10, 400, 0.05)
+class(values) <- "annuity"
+
+print.annuity <- function(x, ...) {
+cat("An annuity object with present value", x$PV, "and final value",
+x$amount, "\n")
+invisible(x)
+}
+values
+
+values$PV
+
+```
 # Clase del martes 28-05-2024
 
 ### El operador %>% del paquete *magrittr*
