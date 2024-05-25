@@ -220,26 +220,31 @@ Además de tener valores, los objetos en R pueden tener atributos con nombre. La
 
 ```r
 annuityValues <- function(n, R, i) {
-amount <- R*((1 + i)ˆn - 1) / i
-PV <- amount * (1 + i)ˆ(-n)
+amount <- R*((1 + i)^n - 1) / i
+PV <- amount * (1 + i)^(-n)
 list(amount = amount, PV = PV)
 }
+
 # Aplicar la función
 annuityValues(10, 400, 0.05)
 
+# Creo la clase Annuity
 values <- annuityValues(10, 400, 0.05)
 class(values) <- "annuity"
 
+# Creo una forma bacana de imprimir los resultados
+ 
 print.annuity <- function(x, ...) {
 cat("An annuity object with present value", x$PV, "and final value",
 x$amount, "\n")
 invisible(x)
 }
+
 values
 
 values$PV
-
 ```
+
 # Clase del martes 28-05-2024
 
 ### El operador %>% del paquete *magrittr*
