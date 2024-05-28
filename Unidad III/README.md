@@ -247,20 +247,113 @@ values$PV
 
 # Clase del martes 28-05-2024
 
+
 ### El operador %>% del paquete *magrittr*
+
+```r
+# Para aplicar una función f de dos argumentos f(x,y), podemos escribir
+x %% f(x, y)
+# Simbolizando, dado el objeto x, aplicar la función f en los
+# argumentos f(x,y)
+```
+
+
+```r
+boxplot(Sepal.Length ~ Species, data = iris,
+        ylab = "Sepal length (cm)",
+        main = "Iris measurements",
+        boxwex = 0.5)
+```
+
+```r
+iris %>% boxplot(Sepal.Length ~ Species, data = .,
+                 ylab = "Sepal length (cm)",
+                 main = "Iris measurements",
+                 boxwex = 0.5)
+```
+
+
+El operador `%>%` del paquete `magrittr` en R es muy útil para encadenar operaciones. Veamos otros dos ejemplos utilizando el conjunto de datos `iris`:
+**Ejemplo 1: Resumen estadístico de las variables numéricas**
+```r
+library(dplyr)
+library(magrittr)
+
+iris %>%
+  summarise_at(vars(-Species), funs(mean(., na.rm = TRUE), sd(., na.rm = TRUE)))
+```
+Este código calcula la media y la desviación estándar de todas las columnas numéricas en el conjunto de datos `iris`, excluyendo la columna `Species`.
+
+**Ejemplo 2: Filtrado y ordenamiento**
+```r
+iris %>%
+  filter(Species == "setosa") %>%
+  arrange(desc(Sepal.Length))
+```
+Este código filtra el conjunto de datos `iris` para incluir solo las filas donde `Species` es "setosa", y luego ordena estas filas en orden descendente por `Sepal.Length`.
+
 ###  La función *replicate ( )*
+
+- Replica una funcition un número **n** de veces.
+- 
+syntaxis
+```r
+replicate(n, { statements })
+```
+
+Replicar 5 veces de una muestra de 1:5
+```r
+replicate(5, 1:5)
+```
+
+5 muestras de tamaño 6 de una variable Normal con media 2 y varianza 1
+```r
+replicate(5, rnorm(6, 2,1))
+```
+
+```r
+
+```
 
 ## *Consejos de programación miscelánea*
 
 ### Edite siempre el código en el editor, no en la consola
 
-### Documentación usando "#"
+### La limpieza cuenta del código
 
-### ¡La limpieza cuenta!
+Evitar errores en los códigos
+```r
+x1<-a+b+c
+y12< -a+b+c
+```
 
-### Algunas pautas generales de programación
+Código espaciado y simetrico
+```r
+x1 <- a + b + c
+y12 < -a + b + c
+
+```
 
 ### Diseño de arriba hacia abajo
+
+```r
+
+```
+```r
+
+```
+```r
+
+```
+```r
+
+```
+```r
+
+```
+```r
+
+```
 
 ## *Depuración y mantenimiento*
 
