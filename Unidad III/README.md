@@ -544,15 +544,68 @@ y ahora vemos otro error: si se hubiera elegido 10, la suma de dígitos sería 1
 
 ## *Programación eficiente*
 
-### Aprende tus herramientas
+- Una función o programación en R es ineficiente si su ejecución demora mucho tiempo y una gran cantidad de memoria.
+  
+Por ejemplo, la suma de dos vectores se podría hacer de la siguiente manera
 
-### Algoritmos eficientes
+```r
+X <- rnorm(100000) # Xi ˜ N(0, 1) i=1, ..., 100,000
+Y <- rnorm(100000) # Yi ˜ N(0, 1) i=1, ..., 100,000
+Z <- c()
+for (i in 1:100000) {
+  Z <- c(Z, X[i] + Y[i]) # this takes about 25 seconds
+}
+
+```
+
+```r
+
+Z <- rep(NA, 100000)
+for (i in 1:100000) {
+  Z[i] <- X[i] + Y[i] # this takes about 0.15 seconds
+}
+
+Z <- X + Y
+```
+
+
 
 ### Mide el tiempo que tarda tu programa
 
-### Estar dispuesto a utilizar diferentes herramientas
+Usamos la función **system.time** para medir el tiempo 
+de ejecución.
 
-### Optimice con cuidado
+```r
+X <- rnorm(100000)
+Y <- rnorm(100000)
+Z <- c()
+system.time({
+for (i in 1:100000) {
+Z <- c(Z, X[i] + Y[i])
+}
+})
+```
+
+
+```r
+Z <- rep(NA, 100000)
+system.time({
+for (i in 1:100000) {
+Z[i] <- X[i] + Y[i]
+}
+})
+
+system.time(Z <- X + Y)
+
+```
+
+
+```r
+
+```
+
+
+
 
 ## *Referencias*
 1.  Introduction  to  Scientific  Programming and Simulation  Using R: [https://nyu-cdsc.github.io/learningr/assets/simulation.pdf](https://nyu-cdsc.github.io/learningr/assets/simulation.pdf)
