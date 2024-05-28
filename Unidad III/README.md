@@ -317,7 +317,6 @@ replicate(5, rnorm(6, 2,1))
 
 ## *Consejos de programación miscelánea*
 
-### Edite siempre el código en el editor, no en la consola
 
 ### La limpieza cuenta del código
 
@@ -340,41 +339,198 @@ y12 < -a + b + c
 <img src="https://raw.githubusercontent.com/jelincovil/A_course_R_programming/main/images_for_r_programming/arriba_hacia_abajo.png" width="500"> 
 
 ```r
+# 1. Use a merge sort to sort a vector
+mergesort <- function (x) {
+  ## 2: sort x into result
+  return (result)
+}
+```
+
+```r
+# 1. Use a merge sort to sort a vector
+mergesort <- function (x) {
+  # 2: sort x into result
+  ## 2.1: split x in half
+  ## 2.2: sort each half
+  ## 2.3: merge the 2 sorted parts into a sorted result
+  return (result)
+}
 
 ```
+
+```r
+# 2.1: split x in half
+len <- length(x)
+x1 <- x[1:(len %/% 2)]
+x2 <- x[(len %/% 2 + 1):len]
+```
+
+```r
+# 1. Use a merge sort to sort a vector
+mergesort <- function (x) {
+  # Check for a vector that doesn't need sorting
+  len <- length(x)
+  if (len < 2) result <- x
+  else {
+    # 2: sort x into result
+    # 2.1: split x in half
+    y <- x[1:(len %/% 2)]
+    z <- x[(len %/% 2 + 1):len]
+    ## 2.2: sort y and z
+    ## 2.3: merge y and z into a sorted result
+  }
+  return(result)
+}
+
+```
+
 ```r
 
+# 2.2: sort y and z
+y <- mergesort(y)
+z <- mergesort(z)
 ```
+
 ```r
+# 1. Use a merge sort to sort a vector
+mergesort <- function (x) {
+# Check for a vector that doesn't need sorting
+len <- length(x)
+if (len < 2) result <- x
+            else {
+# 2: sort x into result
+# 2.1: split x in half
+y <- x[1:(len %/% 2)]
+z <- x[(len %/% 2 + 1):len]
+# 2.2: sort y and z
+y <- mergesort(y)
+z <- mergesort(z)
+# 2.3: merge y and z into a sorted result
+result <- c()
+## 2.3.1: while (some are left in both piles)
+## 2.3.2: put the smallest first element on the end
+## 2.3.3: remove it from y or z
+## 2.3.4: put the leftovers onto the end of result
+}
+return(result)
+}
 
 ```
+
 ```r
+# 1. Use a merge sort to sort a vector
+mergesort <- function (x) {
+  # Check for a vector that doesn't need sorting
+  len <- length(x)
+  if (len < 2) result <- x
+  else {
+    # 2: sort x into result
+    
+    # 2.1: split x in half
+    y <- x[1:(len %/% 2)]
+    z <- x[(len %/% 2 + 1):len]
+    # 2.2: sort y and z
+    y <- mergesort(y)
+    z <- mergesort(z)
+    # 2.3: merge y and z into a sorted result
+    result <- c()
+    # 2.3.1: while (some are left in both piles)
+    while (min(length(y), length(z)) > 0) {
+      # 2.3.2: put the smallest first element on the end
+      # 2.3.3: remove it from y or z
+      if (y[1] < z[1]) {
+        result <- c(result, y[1])
+        y <- y[-1]
+      } else {
+        result <- c(result, z[1])
+        z <- z[-1]
+      }
+    }
+    # 2.3.4: put the leftovers onto the end of result
+    if (length(y) > 0)
+      result <- c(result, y)
+    else
+      result <- c(result, z)
+  }
+  return(result)
+}
+
 
 ```
+
+Ordenando una mustra de un modelo Normal y Poisson
 ```r
-
+mergesort(rnorm(10,3,1))
 ```
+
 ```r
-
+mergesort(rpois(10,5))
 ```
 
-## *Depuración y mantenimiento*
+
 
 ### Reconociendo errores
 
-### Hacer que el error sea reproducible
+```r
+sqrt(var)
+
+```
+
+```r
+
+x <- c(2,4,5,6,8,3,3,1)
+mean("x")
+
+```
+
+```r
+
+mean(X)
+
+```
+
+```r
+
+if (x == NA) print("NA")
+
+```
+
 
 ### Identificar la causa del error
 
-### Corrección de errores y pruebas.
-
-### Busque errores similares en otros lugares
-
-### Depuración en RStudio
-
-### Funciones de *browser( )*, *debug( )*, and *debugonce( )* 
 
 ### Depuración de los operadores %>% magrittr
+
+```r
+library(magrittr)
+x <- sample(1:10, 1)
+x %>% multiply_by(3) %>% add(5) %>% multiply_by(3)
+
+```
+
+Los dígitos no suman 9! Para depurar esto, podemos reescribir el secuencia, guardando resultados intermedios
+
+
+```r
+r1 <- x %>% multiply_by(3); r1
+
+r2 <- r1 %>% add(5); r2
+
+r3 <- r2 %>% multiply_by(3); r3
+
+```
+
+```r
+x %>% multiply_by(3) %>% debug_pipe() %>% add(5) %>%
+  debug_pipe() %>% multiply_by(3)
+
+```
+
+```r
+1:10 %>% multiply_by(3) %>% add(3) %>% multiply_by(3)
+```
+
+
 
 ## *Programación eficiente*
 
