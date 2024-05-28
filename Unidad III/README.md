@@ -252,7 +252,7 @@ values$PV
 
 ```r
 # Para aplicar una función f de dos argumentos f(x,y), podemos escribir
-x %% f(x, y)
+x %>% f(x, y)
 # Simbolizando, dado el objeto x, aplicar la función f en los
 # argumentos f(x,y)
 ```
