@@ -336,6 +336,9 @@ y12 < -a + b + c
 
 ### Diseño de arriba hacia abajo
 
+
+<img src="https://raw.githubusercontent.com/jelincovil/A_course_R_programming/main/images_for_r_programming/arriba_hacia_abajo.png" width="500"> 
+
 ```r
 
 ```
