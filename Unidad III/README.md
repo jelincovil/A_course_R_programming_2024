@@ -501,6 +501,10 @@ if (x == NA) print("NA")
 
 ### Depuración de los operadores %>% magrittr
 
+- **Aplicquemos este desafio**: Elija un número entre 1 y 10 y manténgalo en secreto. Multiplica tu número por 3. Suma 3. Multiplica por 3 nuevamente. 
+Pronostico: Los dígitos de tu número actual suman 9.
+
+
 ```r
 library(magrittr)
 x <- sample(1:10, 1)
@@ -519,6 +523,10 @@ r2 <- r1 %>% add(5); r2
 r3 <- r2 %>% multiply_by(3); r3
 
 ```
+Ahora es obvio que no sumamos 3 en el segundo paso, sumamos 5.
+
+La otra forma de depurar esto es insertar la función magrittr debug_pipe() en la tubería, por ejemplo.
+Esto llama al navegador browser() entre cada paso con el valor actual almacenado en x. Luego pasa x al siguiente paso sin cambios. Podemos imprimir x y reconocer cuando no es el valor correcto. 
 
 ```r
 x %>% multiply_by(3) %>% debug_pipe() %>% add(5) %>%
@@ -526,10 +534,12 @@ x %>% multiply_by(3) %>% debug_pipe() %>% add(5) %>%
 
 ```
 
+Podemos comprobar que nuestra solución es correcta haciendo el cálculo para cada opción inicial posible:
+
 ```r
 1:10 %>% multiply_by(3) %>% add(3) %>% multiply_by(3)
 ```
-
+y ahora vemos otro error: si se hubiera elegido 10, la suma de dígitos sería 18, por lo que deberíamos reformular el truco de magia para seguir sumando dígitos hasta llegar a un solo dígito.
 
 
 ## *Programación eficiente*
