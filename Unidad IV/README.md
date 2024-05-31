@@ -201,7 +201,8 @@ mpg %>% arrange(cty, hwy)
 
 
 ```
-
+ Pagina 148
+ 
 ## Otros librarias/paquetes de *tidyverse* 
 
 ### Libraría *tidyr*: 
