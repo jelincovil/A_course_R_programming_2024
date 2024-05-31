@@ -58,12 +58,149 @@ Además de esos cambios, la función tibble() tiene otras diferencias con respec
 - Todos los argumentos deben tener la misma longitud, o longitud 1; Se supone que el reciclaje de otras longitudes es un error.
 - Los argumentos se evalúan en orden y los argumentos anteriores se pueden utilizar en la definición de los posteriores. Por ejemplo,
  
+
+```r
+
+tibble(x = 1:2, y = x + 1)
+
+```
+
+
 ## El paquete *readr*: leyendo los datos de *tidyverse*
+
+El objetivo principal del paquete readr es permitir al usuario leer un archivo  y generar un tibble. Esto implica tres pasos:
+
+1. El archivo debe convertirse a una matriz rectangular de cadenas.
+2. Es necesario determinar el tipo de cada columna.
+3. Cada columna debe convertirse al tipo apropiado.
+
+```r
+library(readr)
+
+data <- "x,y,z
+1,2,3
+4,5,6
+7,B,9"
+read_csv(data)
+
+```
+
+```r
+
+help(read_csv)
+
+```
+
+```r
+
+read_csv(data, col_types = "nnn")
+
+```
+
+```r
+
+url2 <- "https://raw.githubusercontent.com/jelincovil/A_course_R_programming/main/Datos/sales.csv"
+sales <- read.csv(url2, sep = ";")
+str(sales)
+
+```
+
 
 ## La libraría *stringr* para manipular cadenas
 
 
+El paquete *stringr* es una colección de funciones para solucionar problemas como estas. 
+Su viñeta clasifica las funciones en cuatro grupos:
+
+1. Trabajar con caracteres individuales dentro de cadenas más largas.
+2. Agregar y eliminar espacios en blanco.
+3. Operaciones que dependen de las convenciones en diferentes idiomas, como ordenar cadenas.
+4. Coincidencia de patrones.
+
+```r
+
+x <- c("why", "video", "cross", "extra", "deal", "authority")
+str_length(x) 
+#> [1] 3 5 5 5 4 9
+str_c(x, collapse = ", ")
+#> [1] "why, video, cross, extra, deal, authority"
+str_sub(x, 1, 2)
+#> [1] "wh" "vi" "cr" "ex" "de" "au"
+
+```
+
+```r
+
+str_subset(x, "[aeiou]")
+#> [1] "video"     "cross"     "extra"     "deal"      "authority"
+str_count(x, "[aeiou]")
+#> [1] 0 3 1 2 2 4
+
+
+```
+
+```r
+
+str_detect(x, "[aeiou]")
+#> [1] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE
+
+```
+
+
+```r
+
+str_count(x, "[aeiou]")
+#> [1] 0 3 1 2 2 4
+
+```
+
+
+```r
+
+str_subset(x, "[aeiou]")
+#> [1] "video"     "cross"     "extra"     "deal"      "authority"
+
+
+str_locate(x, "[aeiou]")
+
+```
+
+
+
 ## La libraria *dplyr* para manipular data-frames 
+
+Podemos ejecutar varias funciones:
+- *filter()* selects cases based on their values
+  
+```r
+data(mtcars)
+
+mpg %>% filter(cyl == 5)
+
+```
+
+- arrange() sorts the rows of a data frame.
+  
+```r
+options(tibble.print_min = 3)
+mpg %>% arrange(cty, hwy)
+
+```
+
+```r
+
+
+```
+
+```r
+
+
+```
+
+```r
+
+
+```
 
 ## Otros librarias/paquetes de *tidyverse* 
 
