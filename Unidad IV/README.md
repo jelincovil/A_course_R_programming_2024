@@ -210,3 +210,4 @@ mpg %>% arrange(cty, hwy)
 ### Libraría *purrr*: 
 
 ## Referencias
+1. R for Data Science (2e). https://r4ds.hadley.nz/
