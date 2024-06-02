@@ -22,14 +22,122 @@ La Generación de números pseudoaleatorios en computación se refiere al proces
 
 ## Simulación de otras variables aleatorias.
 
-### Generación de números Uniformes(0, $\theta$) 
+### Generación de números Uniformes(a, b) 
 
+```r
+runif(5)
+
+runif(10, min = -3, max = -1)
+```
+
+```r
+u <- runif(10, min = -3, max = -1)
+hist(u)
+```
+
+Notemos que una misma función con los mismo parametros genera secuencias de numeros diferentes.
+
+```r
+
+runif(5)
+
+```
+
+La función *set.seed(n)* fija la semilla de la generación de números aleatorios
+proveyendo una misma secuencia de números:
+
+```r
+
+set.seed(32789) 
+runif(5)
+
+set.seed(666)
+runif(5)
+
+```
 
 ### Variables aleatorias de Bernoulli
+
+```r
+
+set.seed(23207) # use this to obtain our output
+guesses <- runif(20)
+correct.answers <- (guesses < 0.2)
+correct.answers
+
+```
+
+```r
+
+table(correct.answers)
+
+```
+
+```r
+# Generamos números 0,1
+rbinom(10,1,0.65)
+
+Graficamos en un barplot
+barplot(table(rbinom(10,1,0.65)))
+
+```
+
 ### Variables aleatorias de Poisson
+
+Consideremos una variable $X \sim Poisson (3,7)$ con función de probabilidad
+gráficada por
+
+```r
+s <- seq(0:8)
+p <-  round( dpois(s,3.7), 3)
+plot(s,p, type = "o")
+
+```
+
+```r
+rpois(10, 3.7)
+
+```
+
+
+
+
 ### Números aleatorios exponenciales
-### Variables aleatorias normales
-### Generando variables normales usando Box-Müller transformación
+
+Un banco tiene un solo cajero que se enfrenta a una fila de 10 clientes. El
+El tiempo para atender a cada cliente se distribuye exponencialmente con la tasa.
+3 por minuto. Podemos simular los tiempos de servicio (en minutos) para los 10
+clientes.
+
+
+```r
+t <- seq(0,1, by=0.1)
+
+p <-  round( dexp(t, rate = 3), 3)
+
+plot(t, p, type = "l", col = "blue", 
+     lwd=2, ylab = "f_exp", xlab = "T")
+
+```
+
+
+```r
+
+servicetimes <- rexp(30, rate = 3)
+servicetimes
+hist(servicetimes)
+
+```
+
+
+
+```r
+
+
+```
+
+### Variables aleatorias Normales/Gaussianas
+
 ### Todas las distribuciones integradas
 
 ## Generación de números aleatorios multivariados
