@@ -138,10 +138,9 @@ hist(servicetimes)
 
 ### Variables aleatorias Normales/Gaussianas
 
-### Todas las distribuciones integradas
-
 ## Generación de números aleatorios multivariados
 
+--------------------------------------------------------------------------
 ## Simulación de cadena de Markov
 
 ## Integración de Monte Carlo
