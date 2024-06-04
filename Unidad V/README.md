@@ -247,6 +247,9 @@ jobs_true <- 150
 
 ```
 
+## Un ejemplo de Shinny app web
+
+https://bcdudek.net/rectangles/
 
 
 --------------------------------------------------------------------------
