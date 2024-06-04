@@ -83,6 +83,10 @@ barplot(table(rbinom(10,1,0.65)))
 
 ### Variables aleatorias de Poisson
 
+Función de probabilidad de Poisson
+
+<img src="https://en.wikipedia.org/wiki/Poisson_distribution#/media/File:Poisson_pmf.svg" width="500"> 
+
 Consideremos una variable $X \sim Poisson (3,7)$ con función de probabilidad
 gráficada por
 
