@@ -85,7 +85,7 @@ barplot(table(rbinom(10,1,0.65)))
 
 Función de probabilidad de Poisson
 
-<img src="https://en.wikipedia.org/wiki/Poisson_distribution#/media/File:Poisson_pmf.svg" width="500"> 
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Poisson_pmf.svg/1280px-Poisson_pmf.svg.png" width="500"> 
 
 Consideremos una variable $X \sim Poisson (3,7)$ con función de probabilidad
 gráficada por
