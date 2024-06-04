@@ -14,7 +14,6 @@ Cinco aplicaciones principales de la simulación estadística con R:
 5. **Estadísticas descriptivas**: R ofrece funciones para calcular estadísticas descriptivas básicas como la media, mediana, desviación típica, varianza, rango, cuartiles, percentiles y estadísticas de resumen para la exploración de datos.
 
 
-## Simulación Monte Carlo
 
 ## Generación de números pseudoaleatorios
 
