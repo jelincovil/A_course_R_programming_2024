@@ -169,7 +169,10 @@ x <- x[(0 < x) & (x < 3)] # reject all x's outside (0,3)
 hist(x, probability=TRUE, main = "Variables Normales)
 
 ```
+## Otros modelos de probabilidad
 
+<img src = "https://raw.githubusercontent.com/jelincovil/A_course_R_programming_2024/main/images_for_r_programming/distribution_1.png" width="500"> 
+<img src = "https://raw.githubusercontent.com/jelincovil/A_course_R_programming_2024/main/images_for_r_programming/distribution_2.png" width="500"> 
 
 ## Generación de números aleatorios multivariados
 
