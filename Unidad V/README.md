@@ -1,4 +1,3 @@
-
 # Simulación
 
 Cinco aplicaciones principales de la simulación estadística con R:
@@ -251,6 +250,24 @@ jobs_true <- 150
 
 https://bcdudek.net/rectangles/
 
+
+Shiny es un paquete de R de código abierto que proporciona un marco de trabajo elegante y potente para construir aplicaciones web utilizando R. Shiny te ayuda a convertir tus análisis en aplicaciones web interactivas sin requerir conocimientos de HTML, CSS o JavaScript.
+
+Aquí te dejo algunos detalles sobre Shiny:
+
+- **Interfaz de usuario (UI)**: Define cómo se ve tu aplicación. En el caso más simple, puede ser una página que contiene palabras².
+- **Función del servidor**: Define cómo funciona tu aplicación. Shiny utiliza la programación reactiva para actualizar automáticamente las salidas cuando cambian las entradas².
+- **Expresiones reactivas**: Son el tercer componente importante de las aplicaciones Shiny².
+- **Creación de la aplicación**: Puedes crear una aplicación Shiny creando un nuevo directorio para tu aplicación y colocando un solo archivo llamado app.R en él².
+
+Shiny es una herramienta poderosa y flexible que facilita la construcción de aplicaciones web interactivas y paneles dinámicos directamente desde R⁴. Estas aplicaciones pueden alojarse en una página web independiente o incrustarse en documentos R Markdown⁴.
+
+
+
+## Aplicación Shiny App
+
+
+https://shiny.posit.co/r/gallery/
 
 --------------------------------------------------------------------------
 ## Simulación de cadena de Markov
