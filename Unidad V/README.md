@@ -174,24 +174,80 @@ hist(x, probability=TRUE, main = "Variables Normales)
 <img src = "https://raw.githubusercontent.com/jelincovil/A_course_R_programming_2024/main/images_for_r_programming/distribution_1.png" width="500"> 
 <img src = "https://raw.githubusercontent.com/jelincovil/A_course_R_programming_2024/main/images_for_r_programming/distribution_2.png" width="500"> 
 
-## Generación de números aleatorios multivariados
+## Simulación de un modelo lineal
 
 ```r
 
+set.seed(20)             
+## Simulate predictor variable
+ x <- rnorm(100)          
+ ## Simulate the error term
+ e <- rnorm(100, 0, 2)    
+ ## Compute the outcome via the model
+ y <- 0.5 + 2 * x + e     
+ summary(y)
+
+# Plot the model
+plot(x, y)
+
+```
+
+`## Simulación de Informe Laboral
+
+Una hora antes de la apertura del mercado de valores el primer viernes de cada mes, la Oficina de Estadísticas Laborales de los EE. UU. publica el informe de empleo. Esta estimación ampliamente anticipada del cambio mensual en la nómina no agrícola es un indicador económico que a menudo conduce a cambios en el mercado de valores.
+
+Si lees los blogs financieros, escucharás mucha especulación antes de que se publique el informe y mucho para explicar el cambio en el mercado de valores en los minutos posteriores a la publicación del informe. Y escucharás mucha anticipación de las consecuencias del informe de empleo de ese mes sobre las perspectivas de la economía en general. Resulta que muchos financieros leen mucho en los altibajos del informe de empleo. (Y otras personas, que no toman el informe tan en serio, ven oportunidades en responder a las acciones de los creyentes.)
+
+Se sabe que en los meses posteriores al informe de empleo, se informa un número actualizado que puede tener en cuenta los datos que llegan tarde y que no se pudieron incluir en el informe original. Podriamos
+simular los posibles resultados de este informe.
+
+Consideremos como ejemplo de simulación el Rporte de Trabajo publicado en https://mdsr-book.github.io/mdsr2e/ch-simulation.html
+
+
+Consideremos los siguientes códigos de R.
+
+```r
+
+jobs_true <- 150
+ jobs_se <- 65  # in thousands of jobs
+ gen_samp <- function(true_mean, true_sd, 
+                      num_months = 12, delta = 0, id = 1) {
+   samp_year <- rep(true_mean, num_months) + 
+     rnorm(num_months, mean = delta * (1:num_months), sd = true_sd)
+   return(
+     tibble(
+       jobs_number = samp_year, 
+       month = as.factor(1:num_months), 
+       id = id
+     )
+   )
+ }
+
+ n_sims <- 3
+ params <- tibble(
+   sd = c(0, rep(jobs_se, n_sims)), 
+   id = c("Truth", paste("Sample", 1:n_sims))
+ )
+ params
 
 ```
 
 
 ```r
 
+ df <- params %>%
+   pmap_dfr(~gen_samp(true_mean = jobs_true, true_sd = ..1, id = ..2))
+ 
+ 
+ ggplot(data = df, aes(x = month, y = jobs_number)) + 
+   geom_hline(yintercept = jobs_true, linetype = 2) + 
+   geom_col() + 
+   facet_wrap(~ id) + 
+   ylab("Number of new jobs (in thousands)")
 
 ```
 
 
-```r
-
-
-```
 
 --------------------------------------------------------------------------
 ## Simulación de cadena de Markov
