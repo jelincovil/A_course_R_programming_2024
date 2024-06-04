@@ -1,0 +1,70 @@
+# graficos para una variable categorica
+
+plot_cat <- function(df = NULL, variable = NULL, colores = NULL){
+  c1 <- colores[1] ; c2 <- colores[2] ; c3 <- colores[3]
+  
+  grupo <- names(table(df[, variable]))
+  n <- as.vector(table(df[, variable]))
+  prop <- as.vector(table(df[, variable]))/length(df[, variable])
+  
+  count.data <- data.frame(
+  grupo = names(table(df[, variable])),
+  n = as.vector(table(df[, variable])),
+  prop = round(n/length(df[, variable])*100, 3)
+  )
+  
+    count.data <- count.data %>%
+    arrange(desc(grupo)) %>%
+    mutate(lab.ypos = cumsum(prop) - 0.5*prop)
+  
+    g1 <- ggplot(count.data, aes(x = grupo, y=n ) ) +
+    geom_bar(stat="identity", width= 1, fill= c1 , 
+             color = c2, alpha=2.5) +
+    geom_text(aes(label = n, y = n + 1), color = "black",
+              position = position_dodge(width = 1)) +
+    ggtitle(paste("Gráfico de barras para", variable)) +
+    xlab(variable) + 
+    ylab(paste("Número de casos por", variable))+
+    theme(panel.background = element_rect(fill = c3, 
+             colour = c3, size = 2, linetype = "solid"))
+   
+  
+    g2 <- ggplot(count.data, aes(x = "", y = prop)) +
+      geom_bar(width = 1, stat = "identity", fill= c1, 
+      color = c2, alpha=2.5) +
+      coord_polar("y", start = 0)+
+      geom_text(aes(y = lab.ypos, label = prop), color = "white")+
+      ggtitle(paste("Gráfico de torta (%) para", variable)) +
+    theme(panel.background = element_rect(fill = c3, 
+             colour = c3, size = 2, linetype = "solid"))
+      
+    
+  return(ggarrange( g1, g2, 
+                    labels = c("A", "B"),
+                    ncol = 2, nrow = 1))
+}  
+
+# grafico de mosaico para 2 variables categoricas
+
+ gmosaic <- function(df  = NULL, grupo1 = NULL,
+                    grupo2 = NULL, colores = NULL){
+  
+ c1 <- colores[1] ; c2 <- colores[2] ; c3 <- colores[3]
+
+ df = data.frame(g1 = factor(df[,grupo1]),  g2 = factor(df[,grupo2]))
+
+  g <- ggplot( data = df ) +
+    geom_mosaic(aes(x = product(g1, g2) ), na.rm=TRUE,
+                fill= c1,  color = c2, alpha = 2.5) + 
+    ggtitle(paste("G. de mosaico de", grupo1, "y", grupo2))+
+    ylab(grupo1) +
+    xlab(grupo2) +
+    theme(panel.background = element_rect(fill = c3, 
+                                          colour = c3, size = 2, linetype = "solid"))
+  return(g)
+} 
+
+
+url1 <- "https://raw.githubusercontent.com/jelincovil/A_course_R_programming/main/Datos/atenciones_reducido.csv"
+
+url2 <- "https://raw.githubusercontent.com/jelincovil/A_course_R_programming/main/Datos/sales.csv"
