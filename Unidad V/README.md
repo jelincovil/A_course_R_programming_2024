@@ -192,7 +192,7 @@ plot(x, y)
 
 ```
 
-`## Simulación de Informe Laboral
+## Simulación de Informe Laboral
 
 Una hora antes de la apertura del mercado de valores el primer viernes de cada mes, la Oficina de Estadísticas Laborales de los EE. UU. publica el informe de empleo. Esta estimación ampliamente anticipada del cambio mensual en la nómina no agrícola es un indicador económico que a menudo conduce a cambios en el mercado de valores.
 
