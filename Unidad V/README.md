@@ -107,6 +107,9 @@ rpois(10, 3.7)
 
 ### Números aleatorios exponenciales
 
+Función de densidad exponencial
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Exponential_distribution_pdf_-_public_domain.svg/1280px-Exponential_distribution_pdf_-_public_domain.svg.png" width="500"> 
+
 Un banco tiene un solo cajero que se enfrenta a una fila de 10 clientes. El
 El tiempo para atender a cada cliente se distribuye exponencialmente con la tasa.
 3 por minuto. Podemos simular los tiempos de servicio (en minutos) para los 10
@@ -132,6 +135,48 @@ hist(servicetimes)
 
 ```
 
+Simulando 25 puntos de un proceso de Poisson de parametro $\lambda = 1.5$ comenzando desde 0.
+
+
+
+```r
+
+X <- rexp(25, rate = 1.5)
+cumsum(X)
+plot(0:24, X, type = "o", 
+     main = "Proceso de Poisson",
+     xlab = "Tiempo")
+
+```
+
+### Variables aleatorias Normales/Gaussianas
+
+Función de densidad Normal
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Normal_Distribution_PDF.svg/1920px-Normal_Distribution_PDF.svg.png" width="500"> 
+
+
+```r
+x <- rnorm(10, -3, 0.5)
+print(x)
+hist(x, main = "Variables Normales)
+
+```
+
+```r
+
+x <- rnorm(100000) # simulate from the standard normal
+x <- x[(0 < x) & (x < 3)] # reject all x's outside (0,3)
+hist(x, probability=TRUE, main = "Variables Normales)
+
+```
+
+
+## Generación de números aleatorios multivariados
+
+```r
+
+
+```
 
 
 ```r
@@ -139,9 +184,11 @@ hist(servicetimes)
 
 ```
 
-### Variables aleatorias Normales/Gaussianas
 
-## Generación de números aleatorios multivariados
+```r
+
+
+```
 
 --------------------------------------------------------------------------
 ## Simulación de cadena de Markov
