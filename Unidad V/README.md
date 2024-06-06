@@ -270,23 +270,10 @@ Shiny es una herramienta poderosa y flexible que facilita la construcción de ap
 https://shiny.posit.co/r/gallery/
 
 --------------------------------------------------------------------------
-## Simulación de cadena de Markov
 
-```
-graph TB
-    A[A] -->|P(A->B)| B[B]
-    B -->|P(B->C)| C[C]
-    C -->|P(C->A)| A
-    A -->|P(A->C)| C
-    B -->|P(B->A)| A
-    C -->|P(C->B)| B
-    A -->|P(A->A)| A
-    B -->|P(B->B)| B
-    C -->|P(C->C)| C
-
-```
 
 ## Integración de Monte Carlo
+
 
 ## Métodos avanzados de simulación
 
@@ -297,10 +284,9 @@ graph TB
 
 
 
-##  Sección 1
+##  Ejemplo de aplicación
 
-### ddd
-### ddd
-### ddd
+Consideremos una variable aleatoria $D$ que asume valores en el conjunto de los números Naturales con función de probabilidad:
+
 
 ## Referencias
