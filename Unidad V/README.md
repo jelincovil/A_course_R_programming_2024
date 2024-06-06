@@ -329,7 +329,7 @@ https://shiny.posit.co/r/gallery/
 
 Consideremos una variable aleatoria $D$ que asume valores en el conjunto de los números Naturales con función de probabilidad:
 
-<img src = "https://raw.githubusercontent.com/jelincovil/A_course_R_programming_2024/main/images_for_r_programming/weibull_II.png" width="550"> 
+<img src = "https://raw.githubusercontent.com/jelincovil/A_course_R_programming_2024/main/images_for_r_programming/weibull_II.png" width="800"> 
 
 ```r
 
