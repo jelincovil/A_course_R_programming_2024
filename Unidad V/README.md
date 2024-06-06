@@ -274,10 +274,51 @@ https://shiny.posit.co/r/gallery/
 
 ## Integración de Monte Carlo
 
+```r
+
+```
+
+```r
+
+```
+
+```r
+
+```
+
 
 ## Métodos avanzados de simulación
 
+```r
+
+```
+
+```r
+
+```
+
+```r
+
+```
+
+
 ### Muestreo de rechazo/aceptación
+```r
+
+```
+
+```r
+
+```
+
+```r
+
+```
+
+```r
+
+```
+
 ### Muestreo de rechazo para distribuciones bivariadas
 ### Importancia del muestreo
 ### El algoritmo de Metrópolis-Hastings
@@ -287,6 +328,41 @@ https://shiny.posit.co/r/gallery/
 ##  Ejemplo de aplicación
 
 Consideremos una variable aleatoria $D$ que asume valores en el conjunto de los números Naturales con función de probabilidad:
+
+<img src = "https://raw.githubusercontent.com/jelincovil/A_course_R_programming_2024/main/images_for_r_programming/weibull_II.png" width="550"> 
+
+```r
+
+```
+
+```r
+
+```
+
+
+```r
+
+```
+
+
+```r
+
+```
+
+
+```r
+
+```
+
+
+```r
+
+```
+
+```r
+
+```
+
 
 
 ## Referencias
