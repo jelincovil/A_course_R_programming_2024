@@ -406,36 +406,53 @@ Consideremos una variable aleatoria $D$ que asume valores en el conjunto de los 
 
 ```r
 
+# Función de probabilidad
+
+prob <- function(d,pi,b){
+  
+  ps <- as.numeric( lapply(1:d,  function(x) pd(x, pi, b) ) )  
+  as <- 1-ps[1:(d-1)]
+  producto <- ps[d]*prod(as)
+  return(producto)
+}
+
+
+prob(2, 0.6, 0.8)
+
+
+d=20
+p <- rep(0, d)
+for (i in 1:d) {
+  p[i] <-  prob(i, 0.2, 0.9) 
+}
+
+p
+
+plot(1:d, p, type = "o", main = "Probabilidad Weibull tipo II function")
+
 ```
 
 ```r
 
+d <- 1:length(p)
+probabilities <- p/sum(p)
+
+# Take a sample
+muestra <- sample(d, 
+                      size = 100, 
+                      replace = TRUE, 
+                      prob = probabilities)
+
+
+hist(muestra, probability = TRUE,  breaks="Scott")
+
+
 ```
 
 
 ```r
 
 ```
-
-
-```r
-
-```
-
-
-```r
-
-```
-
-
-```r
-
-```
-
-```r
-
-```
-
 
 
 ## Referencias
