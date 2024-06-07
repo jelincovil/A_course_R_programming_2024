@@ -289,13 +289,7 @@ https://shiny.posit.co/r/gallery/
 
 ## Métodos avanzados de simulación
 
-```r
 
-```
-
-```r
-
-```
 
 ```r
 
@@ -303,26 +297,105 @@ https://shiny.posit.co/r/gallery/
 
 
 ### Muestreo de rechazo/aceptación
-```r
 
+Simulate pseudorandom variates from the triangular density function
+
+Quiero generar variables de una densidad g(x)  en base a otra densidad acotada por f(x), es decir $k g(x) \leq f(x)$
+
+1. Genero de X ~ f(x) y U ~ Uniforme (0,1)
+2. Si   $U*f(x) \leq g(X)$, acepto  X.
+
+```r
+U1 <- runif(100000, max=2)
+U2 <- runif(100000)
+X <- U1[U2 < (1 - abs(1 - U1))]
+hist(X)
 ```
 
 ```r
+kg <- function(x) 0.5*exp(-(x^1.5)) # DENSIDAD exponencial
+X <- rexp(100000)
+U <- runif(100000)
+
+# accept only those X
+X <- X[ U*dexp(X) < kg(X) ] #
+
+hist(X, freq = FALSE, breaks="Scott")
+
 
 ```
 
-```r
-
-```
-
-```r
-
-```
-
-### Muestreo de rechazo para distribuciones bivariadas
 ### Importancia del muestreo
+
+1. Elija una densidad conveniente f(x) (que sabemos cómo extraer muestras de esta).
+2. Obtenga $(x_1,\ldots,x_n)$ como muestra de f(x).
+3. Calcular los pesos $wi = g(xi)/f(xi)$. para $i=1,\ldots, n$
+Ahora podemos aproximarnos a la expectativa de una función h(X) donde $X \sim g(x)$ usando promedios de h(xi) ponderados por wi.
+
+
+```r
+# g(X) densidad target
+g <- function(x) 10*exp(-x^{1.5})
+X <- rexp(100000)
+W <- g(X)/dexp(X)
+media <- weighted.mean(X, W)
+media
+## [1] 0.6579773
+weighted.mean( (X - media)^2, W)
+```
+
+```r
+
+hist(X, freq = FALSE, breaks="Scott")
+abline(v = media)
+
+```
+
+
 ### El algoritmo de Metrópolis-Hastings
 
+```r
+
+theta <- seq(0, 1, length.out = 200)
+prior <- dnorm(theta, mean = 0.5, sd = 0.1)
+prior <- prior/max(prior)
+n <- 200
+x <- 54
+posterior <- prior * theta^x * (1 - theta)^(n - x)
+posterior <- posterior/max(posterior)
+plot(theta, prior, type = "l", col = "blue", lwd=2,
+     xlab = expression(theta), ylab = "Scaled Density")
+lines(theta, posterior, col = "green", lwd= 2)
+legend("topright", legend = c("Prior", "Posterior"), lty = 1,
+       col = c("blue", "green"))
+
+```
+
+```r
+
+logg <- function(theta) {
+  dnorm(theta, mean = 0.5, sd = 0.1, log = TRUE) +
+    x*log(theta) + (n - x)*log(1-theta)
+}
+N <- 100
+xt <- numeric(N + 1)
+xt[1] <- 0.5
+sd <- 0.1
+
+
+steps <- rnorm(N, 0, sd)
+u <- runif(N)
+for (i in 1:N) {
+  y <- xt[i] + steps[i]
+  if (y <= 0 || y >= 1 || log(u[i]) > logg(y) - logg(xt[i]))
+    xt[i + 1] <- xt[i]
+  else
+    xt[i + 1] <- y
+}
+
+plot(0:N, xt, type = "l", ylab = expression(x[t]), xlab = "t")
+
+```
 
 
 ##  Ejemplo de aplicación
