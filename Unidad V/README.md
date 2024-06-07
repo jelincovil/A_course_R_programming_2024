@@ -274,6 +274,13 @@ https://shiny.posit.co/r/gallery/
 
 ## Integración de Monte Carlo
 
+### Aproximacion de probabilidades
+
+$$
+\lim_{n\to \infty}\dfrac{1}{n} \sum_{i=1}^{n} I_{(a,b)}(x_i) = P(a<X<b)=  \int_{a}^{b} f(x)dx 
+$$
+
+
 ```r
 
 ```
@@ -281,6 +288,11 @@ https://shiny.posit.co/r/gallery/
 ```r
 
 ```
+
+### Evaluación de la confianza de un intervalo de Confianza
+$$
+\lim_{n\to \infty}\dfrac{1}{n} \sum_{i=1}^{n} I_i(\mu) = \int_{a}^{b} f(t)dt= 1-\alpha
+$$
 
 ```r
 
@@ -288,13 +300,6 @@ https://shiny.posit.co/r/gallery/
 
 
 ## Métodos avanzados de simulación
-
-
-
-```r
-
-```
-
 
 ### Muestreo de rechazo/aceptación
 
@@ -455,4 +460,4 @@ hist(muestra, probability = TRUE,  breaks="Scott")
 ```
 
 
-## Referencias
+% ## Referencias
