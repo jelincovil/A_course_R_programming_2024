@@ -277,7 +277,9 @@ https://shiny.posit.co/r/gallery/
 ### Aproximacion de probabilidades
 
 $$
+
 \lim_{n\to \infty}\dfrac{1}{n} \sum_{i=1}^{n} I_{(a,b)}(x_i) = P(a<X<b)=  \int_{a}^{b} f(x)dx 
+
 $$
 
 
