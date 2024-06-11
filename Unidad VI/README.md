@@ -72,45 +72,109 @@ Y
 
 ```
 
-
-### Declaración de una matriz
-
-```r
-
-```
-
-```r
-
-```
-
-```r
-
-```
-
 ###  Acceder a elementos de la matriz;  nombres de filas y columnas
 
+Construimos una matriz uniendo columnas:
+
 ```r
+
+x <- seq(1, 3)
+x2 <- x^2
+X <- cbind(x, x2)
+
+```
+
+```r
+X[3, 2]
+
+```
+
+```r
+X[3,]
+
+```
+
+
+```r
+
+X[, 2]
+
+```
+
+```r
+X[3, , drop = FALSE]
 
 ```
 
 ```r
 
+X[, 2, drop = FALSE]
+
 ```
+
+Podemos acceder a los nombres de columnas y lineas de la matriz X
+```r
+colnames(X)
+
+rownames(X)
+
+```
+
+Podemos inserir los nombres en cada linea de la matriz
 
 ```r
 
+rownames(X) <- c("obs1", "obs2", "obs3")
+X
+rownames(X)
 ```
+
+errores al llamar las columnas
+```r
+X$x
+
+X[, "x"]
+
+```
+
+
 ### Propiedades matriciales
 
+Dimensión de la matriz
+
 ```r
+dim(X)
+
+```
+Determinante de una matriz
+```r
+det(H3)
+
+```
+La diagonal de una matriz
+```r
+diag(X)
+
+diag(H3)
+```
+
+El trazp de una matriz
+
+```r
+trace <- function(data) sum(diag(data))
+
+trace(X)
+
+trace(H3)
 
 ```
 
-```r
-
-```
+Diagonal y transpuesta de una matriz
 
 ```r
+diag(diag(H3))
+
+t(X)
 
 ```
 
