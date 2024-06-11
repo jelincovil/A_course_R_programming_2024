@@ -160,7 +160,7 @@ diag(X)
 diag(H3)
 ```
 
-El trazp de una matriz
+El trazo de una matriz
 
 ```r
 trace <- function(data) sum(diag(data))
@@ -183,6 +183,16 @@ t(X)
 ### Matrices triangulares
 
 ```r
+lower.tri(H3)
+
+Hnew <- H3
+
+Hnew[upper.tri(H3, diag = TRUE)] <- 0
+
+```
+
+```r
+
 
 ```
 
@@ -190,36 +200,64 @@ t(X)
 
 ```
 
+###  Aritmética de matrices
+
+Multiplicación y suma de matrices
 ```r
+Y <- 2 * X
+Y
+
+Y + X
 
 ```
 
-### Matriz aritmética
+Suma de una transpueta con una matriz de dimensiones diferentes
 
 ```r
+t(Y) + X
+
+```
+En este ejemplo, t(Y) es un 2 × 3 matriz en cuanto X es 3 × 2
+
+```r
+X * Y
+dim(X) ; dim(Y)
 
 ```
 
 ```r
 
+Z= X * Y
+dim(Z)
+
 ```
 
-```r
-
-```
 
 ## Multiplicación e inversión de matricial 
 
+En R, esta formada multiplicación de matriz puede ser desarrollado mediante el operador %*% por ejemplo
+
 ```r
+t(Y) %*% X
 
 ```
 
 ```r
-
+Y %*% X
 ```
 
+# The crossprod() function is a somewhat more efficient way to
+# calculate YTX:
+
+La función crossprod() nos puede ayudar a forma eficiente a calcular 
+
+$$
+Y^T * X
+$$
 ```r
 
+
+crossprod(Y, X)
 ```
 
 ### Inversión matricial
