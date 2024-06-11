@@ -261,6 +261,101 @@ crossprod(Y, X)
 ```
 
 ### Inversión matricial
+
+```r
+
+
+```
+
+```r
+
+
+```
+
+```R
+# Instalar el paquete si no está instalado
+# install.packages("MASS")
+
+# Cargar el paquete
+library(MASS)
+
+# Usaremos el conjunto de datos 'survey' del paquete MASS
+data(survey)
+
+# Construcción de matrices por columnas
+matriz <- survey[, c("Age", "Height", "Weight")]
+matriz <- na.omit(matriz)  # Eliminar filas con NA
+
+# Acceder a columnas, lineas y elementos especificos de una matriz
+primera_columna <- matriz[, 1]
+primera_fila <- matriz[1, ]
+primer_elemento <- matriz[1, 1]
+
+# Elementos de la diagonal y trazo de una matriz cuadrada
+# Primero, creamos una matriz cuadrada
+matriz_cuadrada <- matriz[1:3, 1:3]
+diagonal <- diag(matriz_cuadrada)
+trazo <- sum(diagonal)
+
+# Traspuesta de una Matriz y Matrices triangulares
+traspuesta <- t(matriz)
+triangular_superior <- upper.tri(matriz)
+triangular_inferior <- lower.tri(matriz)
+
+# Suma, resta, multiplicación, producto cruzado de matrices
+# Para este ejemplo, usaremos dos matrices cuadradas pequeñas
+A <- matrix(c(1, 2, 3, 4), nrow = 2)
+B <- matrix(c(5, 6, 7, 8), nrow = 2)
+suma <- A + B
+resta <- A - B
+multiplicacion <- A %*% B
+producto_cruzado <- crossprod(A, B)
+
+# Inversión de matrices
+inversa_A <- solve(A)
+```
+
+
+Un problema real que se puede resolver con estos conceptos de álgebra lineal es el análisis de componentes principales (PCA), que es una técnica utilizada en ciencia de datos para reducir la dimensionalidad de los datos conservando la mayor cantidad de información posible. Esto se logra transformando las variables originales en un nuevo conjunto de variables, los componentes principales, que son combinaciones lineales de las variables originales.
+
+Aquí tienes un ejemplo de cómo se pueden aplicar estos conceptos en R para realizar un PCA en un conjunto de datos con tres variables (edad, peso, altura).
+
+```R
+# Instalar el paquete si no está instalado
+# install.packages("MASS")
+
+# Cargar el paquete
+library(MASS)
+
+# Usaremos el conjunto de datos 'survey' del paquete MASS
+data(survey)
+
+# Construcción de matrices por columnas
+matriz <- survey[, c("Age", "Height", "Weight")]
+matriz <- na.omit(matriz)  # Eliminar filas con NA
+
+# Centrar y cambiar la escala a 0 y 1 los datos
+matriz <- scale(matriz)
+
+# Realizar el PCA
+pca <- prcomp(matriz)
+
+# Acceder a elementos específicos de la matriz de rotación (los coeficientes de las combinaciones lineales)
+coeficientes <- pca$rotation[1, ]
+
+# Elementos de la diagonal de la matriz de varianzas y covarianzas
+varianzas <- diag(pca$sdev^2)
+
+# Traspuesta de la matriz de scores
+scores_traspuestos <- t(pca$x)
+
+# Suma de las varianzas (igual al trazo de la matriz de varianzas y covarianzas)
+suma_varianzas <- sum(varianzas)
+
+# Inversión de la matriz de varianzas y covarianzas
+inversa_var_cov <- solve(var(pca$x))
+```
+
 ### La descomposición LU
 ### Inversión de una matriz en R
 ### Resolución de sistemas lineales
