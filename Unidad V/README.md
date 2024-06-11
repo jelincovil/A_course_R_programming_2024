@@ -413,6 +413,15 @@ Consideremos una variable aleatoria $D$ que asume valores en el conjunto de los 
 
 ```r
 
+# Función de Riesgo Weibull tipo II, 
+
+pd <- function(d = NULL, pi = NULL, b = NULL) {
+  
+  if(d>0){p <- pi*d^(b-1)} else{p=0}
+  return(p)
+  
+}
+
 # Función de probabilidad
 
 prob <- function(d,pi,b){
