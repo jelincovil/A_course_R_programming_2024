@@ -6,6 +6,8 @@ Podemos resumir en 5 puntos claves la aplicación del Algebra Matricial a Data S
 - **Operaciones Matriciales**: Se describen operaciones como la multiplicación de matrices, la inversión matricial y la resolución de sistemas lineales.
 - **Descomposiciones Matriciales**: Se exploran descomposiciones matriciales específicas, como LU, Choleski y QR.
 - **Funciones Avanzadas**: Se mencionan funciones avanzadas de R como *outer()* y *apply()* para operaciones matriciales.
+
+<img src="https://raw.githubusercontent.com/jelincovil/A_course_R_programming_2024/main/images_for_r_programming/intro_matrices.png" width="800"> 
   
 ## Vectores y matrices en R
 
