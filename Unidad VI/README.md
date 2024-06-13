@@ -318,7 +318,7 @@ inversa_A <- solve(A)
 
 Un problema real que se puede resolver con estos conceptos de álgebra lineal es el análisis de componentes principales (PCA), que es una técnica utilizada en ciencia de datos para reducir la dimensionalidad de los datos conservando la mayor cantidad de información posible. Esto se logra transformando las variables originales en un nuevo conjunto de variables, los componentes principales, que son combinaciones lineales de las variables originales.
 
-Aquí tienes un ejemplo de cómo se pueden aplicar estos conceptos en R para realizar un PCA en un conjunto de datos con tres variables (edad, peso, altura).
+Aquí proponemos un ejemplo de cómo se pueden aplicar estos conceptos en R para realizar un PCA en un conjunto de datos con tres variables (edad, peso, altura).
 
 ```R
 # Instalar el paquete si no está instalado
@@ -372,7 +372,19 @@ inversa_var_cov <- solve(var(pca$x))
 ## Otras operaciones matriciales
 
 ### Función *outer ( )*
+
 ### Función *apply ( )*
+
+La familia de funciones **apply** en R es ampliamente utilizada para aplicar una función a cada elemento de una estructura de datos. Estas funciones son especialmente útiles para operar en matrices, data frames, arrays y listas. A continuación, se presentan las principales funciones de la familia **apply**:
+
+1. **`apply()`**: Aplica una función a filas o columnas de una matriz, data frame o array. Puedes especificar el argumento `MARGIN` para indicar si deseas aplicar la función a filas (con `MARGIN = 1`), columnas (con `MARGIN = 2`), o ambos (con `MARGIN = c(1, 2)`). Además, puedes proporcionar argumentos adicionales para la función que se aplicará¹.
+
+2. **`tapply()`**: Aplica una función a grupos de datos. Es útil para operaciones agregadas en función de factores o variables categóricas⁴.
+
+3. **`sapply()`** y **`lapply()`**: Ambas aplican una función a elementos de una lista. La diferencia radica en que `sapply()` intenta simplificar el resultado a un vector o matriz, mientras que `lapply()` siempre devuelve una lista⁴.
+
+La familia **apply** permite realizar operaciones de manera eficiente sin necesidad de bucles explícitos. ¡Es una herramienta poderosa para el análisis de datos en R! 😊
+
 
 
 
