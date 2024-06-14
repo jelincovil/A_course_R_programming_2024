@@ -262,15 +262,7 @@ crossprod(Y, X)
 
 ### Inversión matricial
 
-```r
 
-
-```
-
-```r
-
-
-```
 
 ```R
 # Instalar el paquete si no está instalado
@@ -360,23 +352,6 @@ inversa_var_cov <- solve(var(pca$x))
 
 Inversión de la matriz H3
 
-```r
-```
-
-```r
-
-```
-
-```r
-
-```
-
-```r
-
-```
-
-
-### Resolución de sistemas lineales
 
 ```r
 
@@ -412,7 +387,9 @@ print(evalues)
 
 ## Otras descomposiciones matriciales
 
-
+- Descomposición por valores singulares.
+- De Choleski.
+- Del tipo QR.
 
 ### La descomposición en valores singulares de una matriz
 
@@ -490,16 +467,77 @@ chol2inv(H3.chol)
 ### La descomposición QR de una matriz.
 
 ```r
+# Descomposicion QR
+
+help(qr)
+H3.qr <- qr(H3)
+H3.qr
 
 ```
 
 ```r
 
+# La matriz Q
+Q <- qr.Q(H3.qr)
+Q
+
+# La matriz P
+R <- qr.R(H3.qr)
+R
+
+
 ```
+
+
+
+```r
+
+# Recuperar la matri H3
+Q %*% R
+
+round(H3 - Q %*% R, 3)
+
+```
+
+
 
 ## Otras operaciones matriciales
 
 ### Función *outer ( )*
+
+```r
+
+help(outer)
+
+x1 <- seq(1, 5)
+x1
+outer(x1, x1, "/")
+
+```
+
+```r
+
+round(outer(x1, x1, "/"), 2)
+
+outer(x1, x1, function(x, y) {x / y})
+
+```
+
+
+```r
+
+outer(x1, x1, "-")
+
+```
+
+```r
+
+y <- seq(5, 10)
+outer(x1, y, "+")
+
+```
+
+
 
 ### Función *apply ( )*
 
@@ -511,10 +549,68 @@ La familia de funciones **apply** en R es ampliamente utilizada para aplicar una
 
 3. **`sapply()`** y **`lapply()`**: Ambas aplican una función a elementos de una lista. La diferencia radica en que `sapply()` intenta simplificar el resultado a un vector o matriz, mientras que `lapply()` siempre devuelve una lista⁴.
 
-La familia **apply** permite realizar operaciones de manera eficiente sin necesidad de bucles explícitos. ¡Es una herramienta poderosa para el análisis de datos en R! 😊
+La familia **apply** permite realizar operaciones de manera eficiente sin necesidad de bucles explícitos. ¡Es una herramienta poderosa para el análisis de datos en R! 
 
 
 
+```r
+
+# Aplicar las funciones apply
+
+apply(H3, 1, sum)
+
+## Ejemplo 1
+
+# Construimos una matriz de 5x6
+my_matrix <- matrix(1:30, nrow = 5, ncol = 6)
+print(my_matrix)
+
+# Calculamos la suma de cada columna
+col_sums <- apply(my_matrix, 2, sum)
+
+# Mostramos los resultados
+print(col_sums)
+
+# Agregamos 2 NAs a la matriz
+
+my_matrix[2,3]<-NA
+apply(my_matrix,1,sum)
+
+# Agremamos un argumento de la funcion vectorizada
+help(sum)
+apply(my_matrix,1,sum,na.rm=TRUE)
+
+# Uso de Lapply
+
+mylist<-list(A=matrix(1:9,nrow=3),B=1:5,C=8)
+mylist
+
+lapply(mylist,sum)
+
+unlist(lapply(mylist,sum))
+
+lapply(mylist,function(x) x*20)
+     
+lapply(mylist,function(x) x*20)
 
 
+# Uso de Sapply
+sapply(mylist,sum)
+
+# Uso de la función Sapply
+mapply(rep,1:4,4:1)
+
+x<-c(A=20,B=1,C=40)
+y<-c(J=430,K=50,L=10)
+
+simply<-function(u,v){
+  (u+v)*2
+}
+
+mapply(simply,x,y)
+
+# Uso de función Tapply
+tapply(iris$Sepal.Length,iris$Species,max)
+
+```
 
