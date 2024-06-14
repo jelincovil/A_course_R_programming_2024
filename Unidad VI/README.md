@@ -1,4 +1,4 @@
-# Álgebra Matricial
+ # Álgebra Matricial
 Podemos resumir en 5 puntos claves la aplicación del Algebra Matricial a Data Science:
 
 - **Álgebra Matricial**: La página se centra en el álgebra matricial, una rama importante de las matemáticas.
@@ -356,18 +356,146 @@ suma_varianzas <- sum(varianzas)
 inversa_var_cov <- solve(var(pca$x))
 ```
 
-### La descomposición LU
 ### Inversión de una matriz en R
+
+Inversión de la matriz H3
+
+```r
+```
+
+```r
+
+```
+
+```r
+
+```
+
+```r
+
+```
+
+
 ### Resolución de sistemas lineales
+
+```r
+
+H3
+H3inv <- solve(H3)
+H3inv
+
+```
+
+```r
+# Comprobamos que H3inv es la inversa de H3
+H3inv %*% H3
+
+```
+
 
 ## Valores propios y vectores propios
 
+```r
+eigen(H3)
+
+v1 <- sprintf("%.3f", eigen(H3)$vectors[,1])
+
+
+```
+
+```r
+
+evalues <- sprintf("%.3f", eigen(H3)$values)
+evalues[3] <- sprintf("%.5f", eigen(H3)$values[3])
+print(evalues)
+```
+
 ## Otras descomposiciones matriciales
 
+
+
 ### La descomposición en valores singulares de una matriz
-### La descomposición de Choleski de un positivo.  matriz definida
+
+```r
+
+help(svd)
+H3.svd <- svd(H3)
+H3.svd
+
+```
+
+```r
+
+H3.svd$d
+H3.svd$u
+H3.svd$v
+
+```
+
+
+```r
+
+# Podemos verificar que los componentes al multiplicarse 
+# apropiadamente reconstruyen la matriz H3
+
+H3.svd$u %*% diag(H3.svd$d) %*% t(H3.svd$v)
+
+HH3 = H3.svd$u %*% diag(H3.svd$d) %*% t(H3.svd$v)
+
+# Verificacion elemento por elemento
+
+round( H3 -  HH3, 2)
+
+```
+
+```r
+
+# Usando esta descomposición, podemos obtener la matriz inversa
+# de H3
+
+H3.svd$v %*% diag(1/H3.svd$d) %*% t(H3.svd$u)
+solve(H3)
+
+Inverse.H3 = H3.svd$v %*% diag(1/H3.svd$d) %*% t(H3.svd$u) 
+
+round(solve(H3) - Inverse.H3, 2)
+
+```
+
+
+### La descomposición de Choleski de un positiva  matriz definida
+
+```r
+
+# Descomposición de Choleski
+
+H3.chol <- chol(H3)
+H3.chol   # Esta es la matriz triangular superior U
+
+crossprod(H3.chol, H3.chol)  
+# Multiplicamos  t(U) %*% U para recuperar  H3
+
+```
+
+```r
+# Calculo de la inversa de H3 por medio de la descomposición de
+# Choleski
+
+chol2inv(H3.chol)
+
+```
+
+
 
 ### La descomposición QR de una matriz.
+
+```r
+
+```
+
+```r
+
+```
 
 ## Otras operaciones matriciales
 
