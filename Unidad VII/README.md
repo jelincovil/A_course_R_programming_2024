@@ -11,9 +11,11 @@ Esto ocurre en al caso de querer encontrar un estimador de maxima verosimilitud 
 ### Máximos y minimos globales
 
 Veremos el caso de los estimadores de minimos cuadrados para un modelos de regresión lineal simple
+
 $$
 Y_i= \alpha + \beta X_i.
 $$
+
 para $i=1,2,...,n$.
 ## Programación linear
 ### Resolver problemas de programación lineal en R
