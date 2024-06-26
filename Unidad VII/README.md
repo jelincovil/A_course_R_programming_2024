@@ -162,7 +162,8 @@ método, por lo que es importante ser consciente de esta condición. En circunst
 acerca de.
 
 $$
-x_1 + x_2 \leq 2 \\
+x_1 + x_2 \leq 2 
+\\
 x_1 + 4x_2 \leq 5
 $$
 
