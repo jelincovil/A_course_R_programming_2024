@@ -155,7 +155,7 @@ La función lp() tiene una serie de parámetros;
 ### Maximización y otros tipos de restricciones.
 ### Situaciones especiales
 
-** Degeneración **
+**Degeneración**
 
 Para un problema con m variables de decisión, la degeneración surge cuando más de m límites de restricción se cruzan en un solo punto. Esta situación es bastante rara, pero tiene el potencial de causar dificultades para el símplex
 método, por lo que es importante ser consciente de esta condición. En circunstancias muy raras, la degeneración puede impedir que el método converja a la solución óptima; La mayoría de las veces, sin embargo, hay poco de qué preocuparse
