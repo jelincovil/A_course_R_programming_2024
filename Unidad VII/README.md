@@ -98,11 +98,89 @@ curve(6 + 3.15*x,
       lwd=3)
 ```
 
-## Programación linear
+## Programación lineal
+
+```r
+
+```
+
+```r
+
+```
+
+
+```r
+
+```
+
+
 ### Resolver problemas de programación lineal en R
+
+Emplearemos una función de programación lineal disponible en R: la función lp() en el paquete *lpSolve* 
+puede ser la más via disponible más estable. Se basa en el método símplex revisado.
+
+```r
+
+library(lpSolve)
+
+```
+
+La función lp() tiene una serie de parámetros; 
+
+- objective.in: el vector de coeficientes de la función objetivo.
+- const.mat: una matriz que contiene los coeficientes de las variables
+  de decisión en el lado izquierdo de las restricciones; cada fila corresponde a un restricción.
+- const.rhs: un vector que contiene las constantes dadas en el lado derecho de las restricciones.
+- const.dir: un vector de caracteres que indica la dirección de la restricción
+  para las desigualdades; Algunas de las entradas posibles son >=, == y <=.
+
+  
+```r
+
+
+```
+
+```r
+
+
+```
+
+```r
+
+
+```
+
+
+
 ### Maximización y otros tipos de restricciones.
 ### Situaciones especiales
-### Variables no restringidas
-### Programación entera
+
+** Degeneración **
+
+Para un problema con m variables de decisión, la degeneración surge cuando más de m límites de restricción se cruzan en un solo punto. Esta situación es bastante rara, pero tiene el potencial de causar dificultades para el símplex
+método, por lo que es importante ser consciente de esta condición. En circunstancias muy raras, la degeneración puede impedir que el método converja a la solución óptima; La mayoría de las veces, sin embargo, hay poco de qué preocuparse
+acerca de.
+
+$$
+
+x_1 + x_2 \leq 2
+
+x_1 + 4x_2 \leq 5
+
+$$
+
+
+```r
+degen.lp <- lp(objective.in = c(3, 1),
+               const.mat = matrix(c(1, 1, 1, 4, 1, 2, 3, 1), nrow = 4),
+               const.rhs = c(2, 3, 4, 4), const.dir = rep(">=", 4))
+degen.lp
+## El optimo de C es 3.333333
+degen.lp$solution
+## [1] 0.6666667 1.3333333
+
+```
+
+
 ### Alternativas a *lp ( )*
 ### Programación cuadrática
