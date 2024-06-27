@@ -10,6 +10,40 @@ Esto ocurre en al caso de querer encontrar un estimador de maxima verosimilitud 
 
 ### Máximos y minimos globales
 
+### MAx/min de una función continua univariada
+
+```r
+# Syntax
+# optim(par, fn, ...)
+```
+
+Consideremos la función
+
+$$
+
+g(x) =|x-3.5| + |x-2| + |x-1|
+
+$$
+
+la cual tiene un minimo global.
+
+```r
+# Syntax
+# optim(par, fn, ...)
+
+g <- function(x) abs(x-3.5) + abs(x-2) + abs(x-1)
+
+# Graficamos g
+curve(g(x), from=-2, to=6,
+      main="Función |x-3.5| + |x-2| + |x-1|")
+
+# Como punto inicial x=0, comienza la busqueda
+# del minimo
+optim(0, g)
+
+```
+
+### Estimación de minimos cuadrado de una regresión
 Veremos el caso de los estimadores de minimos cuadrados para un modelos de regresión lineal simple
 
 $$
