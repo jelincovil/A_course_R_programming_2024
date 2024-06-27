@@ -41,21 +41,27 @@
     ```
 
 7. **Código**: El código se puede representar utilizando comillas invertidas `` ` ``. Para bloques de código, puedes usar tres comillas invertidas seguidas de la identificación del lenguaje. Por ejemplo:
-    ```
-    `código`
-    ```
-    Bloque de código:
-    ```
+
+```
+`código`
+```
+
+ Bloque de código:
+ ```
+
 Código de *Python*:
-    ```python
-    print("Hola, mundo!")
+   ```python
+   print("Hola, mundo!")
     ```
+
+``` 
+
 Código de *R*:
     ```r
     data(mtcars)
     ```
 
-   ```
+```
 
 9. **Tablas**: Las tablas se pueden crear utilizando barras verticales `|` y guiones `-`. Por ejemplo:
     ```
