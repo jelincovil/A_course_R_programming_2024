@@ -20,9 +20,7 @@ Esto ocurre en al caso de querer encontrar un estimador de maxima verosimilitud 
 Consideremos la función
 
 $$
-
 g(x) =|x-3.5| + |x-2| + |x-1|
-
 $$
 
 la cual tiene un minimo global.
