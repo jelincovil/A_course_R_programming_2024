@@ -1,4 +1,4 @@
-# Tópicos de rmarkdown, bookdown y dashboards
+# Tópicos de rmarkdown, bookdown, shinyapps y dashboards
 
 # Parte 0: Sintaxis en R Markdown
 
@@ -110,4 +110,4 @@ Para ver un ejemplo ver los siguientes links:
 ### Referencias
 - R Markdown Cookbook: https://bookdown.org/yihui/rmarkdown-cookbook/
 - bookdown: Authoring Books and Technical Documents with R Markdown: https://bookdown.org/yihui/bookdown/
-
+- Mastering Shinnying [Link](https://mastering-shiny.org/index.html)
