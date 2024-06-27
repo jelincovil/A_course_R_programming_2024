@@ -4,7 +4,7 @@
 
 **Markdown** es un lenguaje de marcado ligero que puedes usar para añadir formato a texto en la web. Aquí te presento una lista de las sintaxis más comunes en Markdown:
 
-1. **Encabezados**: Se crean utilizando el símbolo `#`. Cuantos más símbolos `#`, menor será el encabezado. Por ejemplo:
+1. **Encabezados**: Se crean utilizando el símbolo `#`. Cuantos más símbolos `#`, menor será el tamaño del encabezado. Por ejemplo:
     ```
     # Encabezado 1
     ## Encabezado 2
@@ -46,21 +46,27 @@
     ```
     Bloque de código:
     ```
+Código de *Python*:
     ```python
     print("Hola, mundo!")
     ```
+Código de *R*:
+    ```r
+    data(mtcars)
     ```
 
-8. **Tablas**: Las tablas se pueden crear utilizando barras verticales `|` y guiones `-`. Por ejemplo:
+   ```
+
+9. **Tablas**: Las tablas se pueden crear utilizando barras verticales `|` y guiones `-`. Por ejemplo:
     ```
     | Encabezado 1 | Encabezado 2 |
     | ------------ | ------------ |
     | Celda 1      | Celda 2      |
     ```
 
-9. **Citas**: Las citas se pueden crear utilizando el símbolo `>` antes del texto. Por ejemplo:
+10. **Notas**: Las notas se pueden crear utilizando el símbolo `>` antes del texto. Por ejemplo:
     ```
-    > Esto es una cita.
+    > Esto es una nota.
     ```
 
 Estos son solo algunos ejemplos de lo que puedes hacer con Markdown. Es una herramienta poderosa y flexible para añadir formato a tu texto.
@@ -69,7 +75,7 @@ Estos son solo algunos ejemplos de lo que puedes hacer con Markdown. Es una herr
 Para ver un ejemplo ver los siguientes links:
 - Editor en linea [Stackedit](https://stackedit.io/).
 - Tutorial de Markdown [Tutorial](https://tutorialmarkdown.com/guia)
-  
+-   
 ## Parte 1: Instalación de rmarkdown y primeros documentos
 
 ## Parte 2: bookdown y dashboards
@@ -78,4 +84,4 @@ Para ver un ejemplo ver los siguientes links:
 ### Referencias
 - R Markdown Cookbook: https://bookdown.org/yihui/rmarkdown-cookbook/
 - bookdown: Authoring Books and Technical Documents with R Markdown: https://bookdown.org/yihui/bookdown/
-  
+- Tutorial de Rmarkdown en español [Tutorial]( https://bookdown.org/gboccardo/manual-ED-UCH/introduccion-al-uso-de-rmarkdown-para-la-compilacion-de-resultados-de-rstudio-en-diferentes-formatos.html)  
