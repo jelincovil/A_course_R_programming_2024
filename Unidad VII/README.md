@@ -42,7 +42,7 @@ La funcion de la suma de las diferencias al cuadrado entre el valor predicto y l
 función de alpha y beta es dado por
 
 $$
-  z(\alpha, \beta) = \sum_{i=1}^{n} y_i^2 - 2\alpha\sum_{i=1}^{n} y_i - 2\beta\sum_{i=1}^{n} x_iy_i + n\alpha^2 + \beta^2\sum_{i=1}^{n} x_i^2 + 2\alpha\beta\sum_{i=1}^{n} x_i
+  z(\alpha, \beta) = \sum_{i=1}^n= (y_i - \alpha - \beta x_i)^2 = \sum_{i=1}^{n} y_i^2 - 2\alpha\sum_{i=1}^{n} y_i - 2\beta\sum_{i=1}^{n} x_iy_i + n\alpha^2 + \beta^2\sum_{i=1}^{n} x_i^2 + 2\alpha\beta\sum_{i=1}^{n} x_i
 $$
 
 
