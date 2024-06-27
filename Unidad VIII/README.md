@@ -64,6 +64,7 @@ Código de *R*:
 
 ```
 
+```
 
 9. **Tablas**: Las tablas se pueden crear utilizando barras verticales `|` y guiones `-`. Por ejemplo:
     ```
