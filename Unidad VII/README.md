@@ -100,18 +100,7 @@ curve(6 + 3.15*x,
 
 ## Programación lineal
 
-```r
 
-```
-
-```r
-
-```
-
-
-```r
-
-```
 
 
 ### Resolver problemas de programación lineal en R
@@ -134,25 +123,41 @@ La función lp() tiene una serie de parámetros;
 - const.dir: un vector de caracteres que indica la dirección de la restricción
   para las desigualdades; Algunas de las entradas posibles son >=, == y <=.
 
+### Ejemplo de las cantidade de sulfuro y carbono emitidos
   
 ```r
+eg.lp <- lp(objective.in = c(5, 8), 
+            const.mat = matrix(c(1, 1, 1, 2), nrow = 2), 
+            const.rhs = c(2, 3), 
+            const.dir = c(">=", ">="))
+eg.lp
+## El valor minimo de C= 13
 
-
-```
-
-```r
-
-
-```
-
-```r
-
+eg.lp$solution
 
 ```
+
+
+
 
 
 
 ### Maximización y otros tipos de restricciones.
+
+```r
+eg.lp <- lp(objective.in = c(5, 8),
+            const.mat = matrix(c(1, 1, 1, 2), nrow = 2),
+            const.rhs = c(2, 3),
+            const.dir = c("<=", "="), direction = "max")
+
+eg.lp
+
+#
+
+eg.lp$solution
+
+```
+
 ### Situaciones especiales
 
 **Degeneración**
@@ -178,5 +183,23 @@ degen.lp$solution
 ```
 
 
-### Alternativas a *lp ( )*
+### Ejemplo aplicado al transporte
+
+```r
+
+
+```
+
+```r
+
+```
+
+```r
+
+```
+
+
+```r
+
+```
 ### Programación cuadrática
