@@ -101,7 +101,7 @@ Estos son solo algunos ejemplos de lo que puedes hacer con Markdown. Es una herr
 Para ver un ejemplo ver los siguientes links:
 - Editor en linea [Stackedit](https://stackedit.io/).
 - Tutorial de Markdown [Tutorial](https://tutorialmarkdown.com/guia)
--   
+- Tutorial de Rmarkdown en español [Tutorial](https://bookdown.org/gboccardo/manual-ED-UCH/introduccion-al-uso-de-rmarkdown-para-la-compilacion-de-resultados-de-rstudio-en-diferentes-formatos.html)  
 ## Parte 1: Instalación de rmarkdown y primeros documentos
 
 ## Parte 2: bookdown y dashboards
@@ -110,4 +110,4 @@ Para ver un ejemplo ver los siguientes links:
 ### Referencias
 - R Markdown Cookbook: https://bookdown.org/yihui/rmarkdown-cookbook/
 - bookdown: Authoring Books and Technical Documents with R Markdown: https://bookdown.org/yihui/bookdown/
-- Tutorial de Rmarkdown en español [Tutorial](https://bookdown.org/gboccardo/manual-ED-UCH/introduccion-al-uso-de-rmarkdown-para-la-compilacion-de-resultados-de-rstudio-en-diferentes-formatos.html)  
+
