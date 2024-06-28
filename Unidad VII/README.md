@@ -239,7 +239,10 @@ Vamos a revisar una aplicación que use la función `lpSolve` para resolver un s
 ### Formulación del Sistema Lineal
 
 **Función objetivo:** Maximizar las ganancias:
-\[ \text{Maximizar } Z = 40A + 50B \]
+
+\[ 
+\text{Maximizar } Z = 40A + 50B 
+\]
 
 **Restricciones:**
 1. Capacidad de la Máquina 1:
