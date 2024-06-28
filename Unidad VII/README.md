@@ -169,11 +169,6 @@ eg.lp$solution
 
 ```
 
-
-
-
-
-
 ### Maximización y otros tipos de restricciones.
 
 ```r
@@ -217,21 +212,122 @@ degen.lp$solution
 
 ### Ejemplo aplicado al transporte
 
+Vamos a revisar una aplicación que use la función `lpSolve` para resolver un sistema lineal. Vamos a resolver un problema de optimización de producción.
+
+### Situación a Resolver
+
+**Problema:** Una fábrica produce dos productos, A y B. Cada producto requiere un tiempo específico en dos máquinas, Máquina 1 y Máquina 2. La fábrica quiere maximizar las ganancias produciendo estos productos, pero está limitada por la capacidad de tiempo disponible en cada máquina.
+
+### Datos del Problema
+
+1. **Tiempo requerido por producto (en horas):**
+   - Producto A:
+     - Máquina 1: 2 horas
+     - Máquina 2: 1 hora
+   - Producto B:
+     - Máquina 1: 1 hora
+     - Máquina 2: 3 horas
+
+2. **Capacidad de tiempo disponible (en horas):**
+   - Máquina 1: 100 horas
+   - Máquina 2: 120 horas
+
+3. **Ganancia por unidad producida:**
+   - Producto A: $40
+   - Producto B: $50
+
+### Formulación del Sistema Lineal
+
+**Función objetivo:** Maximizar las ganancias:
+\[ \text{Maximizar } Z = 40A + 50B \]
+
+**Restricciones:**
+1. Capacidad de la Máquina 1:
+\[ 2A + 1B \leq 100 \]
+2. Capacidad de la Máquina 2:
+\[ 1A + 3B \leq 120 \]
+3. No negatividad:
+\[ A \geq 0 \]
+\[ B \geq 0 \]
+
+### Código R para Resolver el Problema
+
+A continuación, el código en R para definir y resolver este problema utilizando `lpSolve`:
+
 ```r
+# Instalar y cargar el paquete lpSolve
+# Definir la función objetivo
+f.obj <- c(40, 50)
 
+# Definir las restricciones
+f.con <- matrix(c(2, 1,  # Coeficientes de A y B en la restricción de la Máquina 1
+                  1, 3), # Coeficientes de A y B en la restricción de la Máquina 2
+                nrow = 2, byrow = TRUE)
 
+# Definir la dirección de las restricciones
+f.dir <- c("<=", "<=")
+
+# Definir los lados derechos de las restricciones
+f.rhs <- c(100, 120)
+
+# Resolver el problema de programación lineal
+resultado <- lp("max", f.obj, f.con, f.dir, f.rhs)
+
+# Obtener y mostrar los resultados
+valor_optimo <- resultado$objval
+valores_variables <- resultado$solution
+
+cat("Ganancia máxima:", valor_optimo, "\n")
+cat("Unidades de A a producir:", valores_variables[1], "\n")
+cat("Unidades de B a producir:", valores_variables[2], "\n")
 ```
 
-```r
+### Explicación del Código
 
-```
+1. **Definir la función objetivo:** 
+   ```r
+   f.obj <- c(40, 50)
+   ```
+   Esto representa las ganancias por cada unidad de los productos A y B.
 
-```r
+2. **Definir las restricciones:**
+   ```r
+   f.con <- matrix(c(2, 1,
+                     1, 3), 
+                   nrow = 2, byrow = TRUE)
+   ```
+   La matriz `f.con` contiene los coeficientes de las restricciones.
 
-```
+3. **Definir la dirección de las restricciones:**
+   ```r
+   f.dir <- c("<=", "<=")
+   ```
+   Esto indica que ambas restricciones son de tipo "menor o igual que".
+
+4. **Definir los lados derechos de las restricciones:**
+   ```r
+   f.rhs <- c(100, 120)
+   ```
+   Estos son los valores máximos de horas disponibles para las máquinas 1 y 2.
+
+5. **Resolver el problema:**
+   ```r
+   resultado <- lp("max", f.obj, f.con, f.dir, f.rhs)
+   ```
+
+6. **Obtener y mostrar los resultados:**
+   ```r
+   valor_optimo <- resultado$objval
+   valores_variables <- resultado$solution
+
+   cat("Ganancia máxima:", valor_optimo, "\n")
+   cat("Unidades de A a producir:", valores_variables[1], "\n")
+   cat("Unidades de B a producir:", valores_variables[2], "\n")
+   ```
+
+### Resultados Esperados
+
+El resultado del código proporcionará la cantidad óptima de productos A y B que deben producirse para maximizar las ganancias, dado el tiempo disponible en las máquinas. También mostrará la ganancia máxima que se puede obtener bajo estas condiciones.
 
 
-```r
-
-```
 ### Programación cuadrática
