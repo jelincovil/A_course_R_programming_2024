@@ -239,23 +239,33 @@ Vamos a revisar una aplicación que use la función `lpSolve` para resolver un s
 ### Formulación del Sistema Lineal
 
 **Función objetivo:** Maximizar las ganancias:
+
 $$ 
 \text{Maximizar } Z = 40A + 50B 
 $$
 
 **Restricciones:**
 1. Capacidad de la Máquina 1:
+
 $$
 2A + 1B \leq 100
 $$
+
 3. Capacidad de la Máquina 2:
+
 $$
 1A + 3B \leq 120
 $$
 
 5. No negatividad:
-$$ A \geq 0 $$
-$$ B \geq 0 $$
+
+$$
+A \geq 0 
+$$
+
+$$ 
+B \geq 0 
+$$
 
 ### Código R para Resolver el Problema
 
