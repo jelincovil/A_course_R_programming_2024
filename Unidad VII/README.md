@@ -10,7 +10,7 @@ Esto ocurre en al caso de querer encontrar un estimador de maxima verosimilitud 
 
 ### Máximos y minimos globales
 
-### MAx/min de una función continua univariada
+### Max/min de una función continua univariada
 
 ```r
 # Syntax
