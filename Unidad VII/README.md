@@ -212,7 +212,7 @@ degen.lp$solution
 
 ### Ejemplo aplicado al transporte
 
-Vamos a revisar una aplicación que use la función `lpSolve` para resolver un sistema lineal. Vamos a resolver un problema de optimización de producción.
+Vamos a revisar una aplicación que emplee la función `lpSolve` para resolver un sistema lineal a un problema de optimización de en el contexto de la producción.
 
 ### Situación a Resolver
 
@@ -269,7 +269,7 @@ $$
 
 ### Código R para Resolver el Problema
 
-A continuación, el código en R para definir y resolver este problema utilizando `lpSolve`:
+A seguir presentamos el código en R para definir y resolver este problema utilizando `lpSolve`:
 
 ```r
 # Instalar y cargar el paquete lpSolve
@@ -346,5 +346,5 @@ cat("Unidades de B a producir:", valores_variables[2], "\n")
 
 El resultado del código proporcionará la cantidad óptima de productos A y B que deben producirse para maximizar las ganancias, dado el tiempo disponible en las máquinas. También mostrará la ganancia máxima que se puede obtener bajo estas condiciones.
 
-
+# Next (Sábado)
 ### Programación cuadrática
