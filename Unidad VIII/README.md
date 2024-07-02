@@ -113,6 +113,8 @@ Para ver un ejemplo ver los siguientes links:
    - **Recursos:**
      - [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/)
      - [Documentación oficial de R Markdown](https://rmarkdown.rstudio.com/)
+     - Página oficial de [Bookdown](https://bookdown.org/)
+     - 
 
 2. **knitr:**
    - **Descripción:** `knitr` es una herramienta que facilita la integración de código y resultados dentro de documentos de varios formatos.
@@ -131,6 +133,11 @@ Para ver un ejemplo ver los siguientes links:
    - **Recursos:**
      - [Blogdown: Creating Websites with R Markdown](https://bookdown.org/yihui/blogdown/)
      - [GitHub repository de blogdown](https://github.com/rstudio/blogdown)
+     - [Lista de blogs](https://awesome-blogdown.com/)
+
+#### Ejemplo de template para tesis o disertación
+
+[Oxford template](https://ulyngs.github.io/oxforddown/)
 
 ### Instalación Correcta de R Markdown
 
