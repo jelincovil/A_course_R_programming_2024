@@ -106,7 +106,7 @@ Para ver un ejemplo ver los siguientes links:
 
 ### Contribuciones Principales de Yihui Xie
 
-**Yihui Xie** es conocido por sus importantes contribuciones al ecosistema de R y la creación de herramientas que facilitan la reproducibilidad y la documentación de análisis de datos. A continuación, se presentan sus contribuciones más destacadas junto con enlaces a recursos y tutoriales relevantes:
+[**Yihui Xie**](https://yihui.org/en/) es conocido por sus importantes contribuciones al ecosistema de R y la creación de herramientas que facilitan la reproducibilidad y la documentación de análisis de datos. A continuación, se presentan sus contribuciones más destacadas junto con enlaces a recursos y tutoriales relevantes:
 
 1. **R Markdown:**
    - **Descripción:** R Markdown permite la creación de documentos dinámicos que combinan código R y texto, lo que facilita la generación de informes reproducibles.
