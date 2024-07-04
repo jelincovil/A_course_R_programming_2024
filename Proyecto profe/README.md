@@ -1,15 +1,19 @@
-# Proyecto de desarrollo profe Jaime
+## Ejemplo de Proyecto
 
-## Titulo: optimizar el tiempo de aplicación del calculo de una estadistica quase U para datos multivariados
+# Titulo: función escalable para la estimación de curvas
 
-###
 
-## Objetivo: minimizar y a menos de 5 segundos la operación para más de 15000 observaciones.
+## Objetivo: 
    -
    -
    -
-   
-####
+## Teoria
+
+$$
+\widehat{f}(t)=
+$$
+
+## Implementación
 
 
 
