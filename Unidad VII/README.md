@@ -353,8 +353,13 @@ El resultado del código proporcionará la cantidad óptima de productos A y B q
 
 **Programación Cuadrática (QP)** es una extensión de la programación lineal, donde la función objetivo es cuadrática y las restricciones son lineales. Matemáticamente, un problema de programación cuadrática se puede expresar como:
 
-\[ \text{Minimizar} \quad \frac{1}{2} x^T Q x + c^T x \]
-\[ \text{Sujeto a} \quad Ax \leq b \]
+$$ 
+\text{Minimizar} \quad \frac{1}{2} x^T Q x + c^T x 
+$$
+
+$$ 
+\text{Sujeto a} \quad Ax \leq b 
+$$
 
 Donde:
 - \( Q \) es una matriz simétrica definida positiva.
