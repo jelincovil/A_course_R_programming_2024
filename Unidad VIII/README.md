@@ -520,7 +520,7 @@ bookdown::render_book("index.Rmd", "bookdown::gitbook")
 Puedes personalizar el estilo del libro editando archivos CSS para HTML o modificando preámbulos LaTeX para PDF. Crea un archivo `style.css` y ajusta los estilos según tus necesidades.
 
 
-Link de creacion de libros con **bookdown** en este (link)[https://www.youtube.com/watch?v=KMVYPHJ75D0].
+Link de creacion de libros con **bookdown** en este [link](https://www.youtube.com/watch?v=KMVYPHJ75D0).
 
 ### Referencias
 - R Markdown Cookbook: https://bookdown.org/yihui/rmarkdown-cookbook/
