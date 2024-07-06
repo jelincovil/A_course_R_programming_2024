@@ -201,6 +201,202 @@ plot(mtcars$wt, mtcars$mpg, main="Gráfico de Dispersión", xlab="Peso", ylab="M
 ```
 ```
 
+## Configuración del *yalm* y los *chunks*
+
+En R Markdown, los encabezados se especifican en el encabezado "YAML" y dentro del documento para dar formato y estructura.
+
+#### YAML Header
+El YAML header se encuentra al principio del documento y define metadatos y opciones de salida. Se delimita con líneas de tres guiones (`---`). 
+
+**Ejemplo de YAML Header:**
+```markdown
+---
+title: "Título del Documento"
+author: "Nombre del Autor"
+date: "2024-06-30"
+output:
+  html_document:
+    theme: united
+    toc: true
+    toc_depth: 2
+  pdf_document:
+    toc: true
+  word_document: default
+params:
+  data: "default_data.csv"
+---
+```
+
+**Componentes del YAML Header:**
+- `title`: Título del documento.
+- `author`: Autor del documento.
+- `date`: Fecha del documento.
+- `output`: Formatos de salida y sus opciones (e.g., `html_document`, `pdf_document`, `word_document`).
+- `params`: Parámetros para la personalización de informes.
+
+### Uso de Chunks en R Markdown
+
+Los chunks de código permiten la inclusión y ejecución de código R u otros lenguajes dentro del documento. Los chunks se delimitan con tres tildes invertidas y llaves.
+
+**Ejemplo Básico de un Chunk de Código:**
+```markdown
+```{r}
+summary(mtcars)
+```
+```
+
+#### Opciones de Chunks
+
+Las opciones se especifican en la cabecera del chunk. Aquí hay algunas de las opciones más comunes:
+
+**Opciones Generales:**
+- `echo`: Muestra el código (`TRUE` por defecto).
+  ```markdown
+  ```{r echo=FALSE}
+  summary(mtcars)
+  ```
+  ```
+
+- `eval`: Evalúa el código (`TRUE` por defecto).
+  ```markdown
+  ```{r eval=FALSE}
+  summary(mtcars)
+  ```
+  ```
+
+- `include`: Incluye el código y los resultados en el documento (`TRUE` por defecto).
+  ```markdown
+  ```{r include=FALSE}
+  summary(mtcars)
+  ```
+  ```
+
+- `message` y `warning`: Muestra mensajes y advertencias (`TRUE` por defecto).
+  ```markdown
+  ```{r message=FALSE, warning=FALSE}
+  library(ggplot2)
+  ```
+  ```
+
+**Opciones para Tablas y Gráficos:**
+
+- `fig.width` y `fig.height`: Establece el ancho y alto de las figuras.
+  ```markdown
+  ```{r fig.width=7, fig.height=5}
+  plot(mtcars)
+  ```
+  ```
+
+- `fig.cap`: Añade una leyenda a la figura.
+  ```markdown
+  ```{r fig.cap="Gráfico de Dispersión de mtcars"}
+  plot(mtcars)
+  ```
+  ```
+
+- `fig.align`: Alinea la figura (`'left'`, `'center'`, `'right'`).
+  ```markdown
+  ```{r fig.align='center'}
+  plot(mtcars)
+  ```
+  ```
+
+- `out.width` y `out.height`: Establece el tamaño de salida del gráfico.
+  ```markdown
+  ```{r out.width='70%', out.height='50%'}
+  plot(mtcars)
+  ```
+  ```
+
+
+
+## Visualización de Datos
+Gráfico de dispersión del conjunto de datos `mtcars`.
+
+```{r fig.width=7, fig.height=5, fig.cap="Gráfico de Dispersión de mtcars", fig.align='center'}
+plot(mtcars$wt, mtcars$mpg, main="Gráfico de Dispersión", xlab="Peso", ylab="Millas por Galón")
+```
+```
+
+Esta especificación cubre los elementos esenciales de los encabezados YAML y el uso de chunks de código en R Markdown, permitiendo la creación de documentos reproducibles y bien estructurados.
+
+## Plantillas dinamicas de Rmarkdown
+
+### Aplicaciones Dinámicas y Parámetros en R Markdown
+
+R Markdown permite la creación de documentos dinámicos mediante el uso de parámetros. Los parámetros permiten personalizar informes sin modificar el código, solo ajustando valores de entrada en el YAML header.
+
+#### Configuración de Parámetros en el YAML Header
+
+```markdown
+---
+title: "Análisis de Datos Dinámico"
+author: "Nombre del Autor"
+date: "2024-06-30"
+output: html_document
+params:
+  dataset: "data.csv"
+  alpha: 0.05
+  sample_size: 100
+---
+```
+
+#### Uso de Parámetros en el Documento
+
+```markdown
+```{r}
+# Leer los parámetros
+data_file <- params$dataset
+alpha_level <- params$alpha
+n <- params$sample_size
+
+# Cargar el conjunto de datos
+data <- read.csv(data_file)
+
+# Análisis de datos
+summary(data)
+```
+```
+
+### Ejemplo de Aplicación Dinámica
+
+1. **Análisis Estadístico:**
+   - Permite realizar análisis de datos en diferentes conjuntos de datos o con diferentes niveles de significancia sin modificar el código base.
+
+2. **Informes Personalizados:**
+   - Genera informes para diferentes clientes o escenarios ajustando solo los parámetros de entrada.
+
+### Ejemplo Completo
+
+```markdown
+---
+title: "Informe Personalizado de Análisis de Datos"
+author: "Tu Nombre"
+date: "2024-06-30"
+output: html_document
+params:
+  dataset: "data.csv"
+  significance: 0.05
+  group: "A"
+---
+
+```{r}
+# Leer parámetros
+data_file <- params$dataset
+alpha <- params$significance
+group <- params$group
+
+# Cargar datos
+data <- read.csv(data_file)
+
+# Filtrar datos por grupo
+data_group <- subset(data, Group == group)
+
+# Realizar análisis
+t.test(data_group$Variable ~ data_group$Condition, conf.level = 1 - alpha)
+```
+```
+
 
 ## Parte 2: bookdown y dashboards
 
