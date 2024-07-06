@@ -24,7 +24,7 @@ $$
 $$
 
 $$
-\widehat{f}(t)= \sum_{k} c_kj_0 \phi_{j_0}(t) + \sum_{j} \sum_{k} d_{jk}\psi_{jk}(t).
+\widehat{f}(t)= \sum_{k} c_{kj_0} \phi_{j_0}(t) + \sum_{j} \sum_{k} d_{jk}\psi_{jk}(t).
 $$
 
 ## Implementación
