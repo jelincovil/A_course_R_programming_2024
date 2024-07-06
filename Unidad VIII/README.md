@@ -396,6 +396,8 @@ data_group <- subset(data, Group == group)
 t.test(data_group$Variable ~ data_group$Condition, conf.level = 1 - alpha)
 ```
 ```
+````
+
 
 ## Shiny apps
 
@@ -415,6 +417,110 @@ Aquí tienes una lista de recursos donde puedes encontrar ejemplos de aplicacion
 
 ## Parte 2: bookdown y dashboards
 
+Crear un libro con **bookdown** en R es un proceso que permite combinar múltiples archivos R Markdown (.Rmd) en un libro cohesivo que puede ser exportado a varios formatos como HTML, PDF y ePub. Aquí tienes las indicaciones generales para crear un libro con **bookdown**:
+
+### Paso 1: Instalación de `bookdown`
+
+Instala el paquete `bookdown` desde CRAN si aún no lo tienes instalado:
+
+```r
+install.packages("bookdown")
+```
+
+### Paso 2: Estructura del Proyecto
+
+Crea un nuevo proyecto en RStudio para tu libro. Dentro de este proyecto, necesitas tener una estructura básica de archivos:
+
+- **index.Rmd**: Archivo principal del libro. Contiene el YAML header y la introducción.
+- **01-introduccion.Rmd**: Primer capítulo del libro.
+- **02-metodologia.Rmd**: Segundo capítulo, y así sucesivamente.
+- **_bookdown.yml**: Archivo de configuración de bookdown.
+- **_output.yml**: Archivo de configuración de formatos de salida.
+
+### Paso 3: Creación del Archivo `index.Rmd`
+
+Crea el archivo `index.Rmd` con el siguiente contenido:
+
+```markdown
+---
+title: "Título del Libro"
+author: "Tu Nombre"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+output:
+  bookdown::gitbook:
+    css: style.css
+  bookdown::pdf_book: default
+  bookdown::epub_book: default
+---
+
+# Introducción
+
+Este es el primer capítulo de mi libro creado con **bookdown**.
+```
+
+### Paso 4: Configuración de `bookdown`
+
+Crea el archivo `_bookdown.yml` con el siguiente contenido:
+
+```yaml
+book_filename: "nombre_del_libro"
+rmd_files: ["index.Rmd", "01-introduccion.Rmd", "02-metodologia.Rmd"]
+clean: ["_bookdown_files", "_main_files", "_book"]
+```
+
+Crea el archivo `_output.yml` para definir los formatos de salida:
+
+```yaml
+bookdown::gitbook:
+  css: style.css
+  config:
+    toc:
+      collapse: section
+      before: |
+        <li><a href="./">Home</a></li>
+bookdown::pdf_book:
+  includes:
+    in_header: preamble.tex
+  latex_engine: xelatex
+bookdown::epub_book: default
+```
+
+### Paso 5: Creación de Capítulos
+
+Crea archivos `.Rmd` adicionales para los capítulos del libro, como `01-introduccion.Rmd` y `02-metodologia.Rmd`.
+
+**Ejemplo de `01-introduccion.Rmd`:**
+
+```markdown
+# Introducción
+
+Bienvenido a mi libro. Este es el primer capítulo donde introducimos los conceptos básicos.
+```
+
+**Ejemplo de `02-metodologia.Rmd`:**
+
+```markdown
+# Metodología
+
+En este capítulo, discutimos la metodología utilizada en este libro.
+```
+
+### Paso 6: Compilación del Libro
+
+Para compilar el libro, utiliza la función `render_book()` de bookdown o el botón "Build Book" en RStudio.
+
+```r
+bookdown::render_book("index.Rmd", "bookdown::gitbook")
+```
+
+### Paso 7: Personalización y Estilo
+
+Puedes personalizar el estilo del libro editando archivos CSS para HTML o modificando preámbulos LaTeX para PDF. Crea un archivo `style.css` y ajusta los estilos según tus necesidades.
+
+
+Link de creacion de libros con **bookdown** en este (link)[https://www.youtube.com/watch?v=KMVYPHJ75D0].
 
 ### Referencias
 - R Markdown Cookbook: https://bookdown.org/yihui/rmarkdown-cookbook/
