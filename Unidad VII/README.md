@@ -346,5 +346,57 @@ cat("Unidades de B a producir:", valores_variables[2], "\n")
 
 El resultado del código proporcionará la cantidad óptima de productos A y B que deben producirse para maximizar las ganancias, dado el tiempo disponible en las máquinas. También mostrará la ganancia máxima que se puede obtener bajo estas condiciones.
 
-# Next (Sábado)
+
 ### Programación cuadrática
+
+### Explicación Completa de la Programación Cuadrática
+
+**Programación Cuadrática (QP)** es una extensión de la programación lineal, donde la función objetivo es cuadrática y las restricciones son lineales. Matemáticamente, un problema de programación cuadrática se puede expresar como:
+
+\[ \text{Minimizar} \quad \frac{1}{2} x^T Q x + c^T x \]
+\[ \text{Sujeto a} \quad Ax \leq b \]
+
+Donde:
+- \( Q \) es una matriz simétrica definida positiva.
+- \( c \) es un vector de coeficientes lineales.
+- \( x \) es el vector de variables de decisión.
+- \( A \) y \( b \) definen las restricciones lineales.
+
+### Ejemplo Aplicado a Data Science en R
+
+Supongamos que queremos minimizar una función cuadrática sujeta a restricciones lineales. Esto podría ser útil, por ejemplo, en la optimización de portafolios en finanzas.
+
+**Ejemplo: Optimización de Portafolio**
+
+```r
+# Instalar y cargar el paquete quadprog
+install.packages("quadprog")
+library(quadprog)
+
+# Definir los parámetros del problema
+Dmat <- matrix(c(2, 0.5, 0.5, 1), nrow = 2)
+dvec <- c(-8, -6)
+Amat <- matrix(c(1, 2, 1, -1, 0, 1), nrow = 3, byrow = TRUE)
+bvec <- c(2, 2, 0)
+meq <- 1
+
+# Resolver el problema de programación cuadrática
+sol <- solve.QP(Dmat, dvec, t(Amat), bvec, meq)
+sol$solution
+
+# Imprimir la solución
+print(sol$solution)
+```
+
+### Explicación del Código
+
+1. **Paquete `quadprog`:** Utilizamos el paquete `quadprog` para resolver problemas de programación cuadrática.
+2. **Definición de Matrices y Vectores:**
+   - `Dmat`: Matriz \( Q \) de la función cuadrática.
+   - `dvec`: Vector \( c \) de coeficientes lineales.
+   - `Amat` y `bvec`: Matrices de restricciones.
+   - `meq`: Número de restricciones de igualdad.
+3. **Resolución del Problema:**
+   - `solve.QP` encuentra la solución óptima al problema definido.
+   - `sol$solution` proporciona los valores óptimos de las variables.
+
