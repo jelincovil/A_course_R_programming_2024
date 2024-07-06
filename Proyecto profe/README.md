@@ -4,9 +4,8 @@
 
 
 ## Objetivo: 
-   -
-   -
-   -
+   - Estimar la curva media sin ruido y la grafique.
+   - Estimar las curvas medias sin ruido y las grafique.
 ## Motivación empirica y teorica
 
 <img src="https://fr.mathworks.com/help/wavelet/ug/noisysig_ex.png" width="800"> 
