@@ -9,7 +9,8 @@
    -
 ## Motivación empirica y teorica
 
-https://fr.mathworks.com/help/wavelet/ug/noisysig_ex.png
+<img src="https://fr.mathworks.com/help/wavelet/ug/noisysig_ex.png" width="800"> 
+
 
 La idea es estimar una función continua $f(t)$ observada con un cierta distorción dada por un ruido $W(t)$
 
