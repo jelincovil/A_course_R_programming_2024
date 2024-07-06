@@ -397,6 +397,21 @@ t.test(data_group$Variable ~ data_group$Condition, conf.level = 1 - alpha)
 ```
 ```
 
+## Shiny apps
+
+Aquí tienes una lista de recursos donde puedes encontrar ejemplos de aplicaciones dinámicas desarrolladas con Shiny para Data Science:
+
+1. **Shiny Gallery by Posit**: Una colección extensa de ejemplos de aplicaciones Shiny que demuestran diversas características y funcionalidades, incluyendo gráficos interactivos, tablas, y interfaces de usuario dinámicas. Puedes explorarlas [aquí](https://shiny.posit.co/gallery/).
+
+2. **Shiny User Showcase**: Esta galería incluye aplicaciones Shiny creadas por la comunidad, categorizadas por áreas de aplicación como educación, finanzas, salud pública y más. Es un excelente recurso para ver aplicaciones prácticas y encontrar inspiración. Disponible [aquí](https://shiny.rstudio.com/gallery/).
+
+3. **Appsilon Shiny Demo Gallery**: Appsilon presenta una variedad de aplicaciones Shiny con interfaces modernas y funcionalidades avanzadas. Puedes ver ejemplos que incluyen dashboards de diversidad racial, producción de electricidad, y más. Explora la galería [aquí](https://demo.appsilon.ai/).
+
+4. **RStudio Shiny Examples Repository en GitHub**: RStudio mantiene un repositorio en GitHub con numerosos ejemplos de aplicaciones Shiny, desde las más básicas hasta las más avanzadas. Este recurso es útil para estudiar el código fuente y aprender a implementar características específicas. Puedes acceder al repositorio [aquí](https://github.com/rstudio/shiny-examples).
+
+5. **YakData's R Shiny App Gallery**: YakData ofrece una galería de aplicaciones Shiny que cubren una amplia gama de aplicaciones en data science. Este recurso es ideal para explorar diferentes diseños y patrones de uso en aplicaciones Shiny. Consulta la galería [aquí](https://yakdata.com/r-shiny-app-dashboards/).
+
+
 
 ## Parte 2: bookdown y dashboards
 
