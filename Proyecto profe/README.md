@@ -96,47 +96,52 @@ Función objetivo mejorada
 ```r
 
 ### Wavelet based curve estimation with thresholding 
-mweth <- function(signal = NULL, 
-                  filtro = NULL, 
-                  waveletn = NULL,
-                  j0 = NULL){
+
+hat_f <- function(signal = NULL, # es la curva observada con distorcion 
+                  filtro = NULL, #
+                  waveletn = NULL, #
+                  j0 = NULL, # 
+                  j1= NULL){
+  ## Nota: paquete necesario "wavethresh"
   
-  # Verificar si la longitud de la señal es una potencia de 2
+  # Parte 0:  Verificar si la longitud de la señal/curva es una potencia de 2
   n <- length(signal)
   if (!log2(n) %% 1 == 0) {
     warning("La longitud de la señal no es una potencia de 2, la función puede no funcionar correctamente.")
   }
   
+  # Descompongo los datos mediante la funcion "wd"
+  # Parte I: descomposicicón de la curva con ruido
   signal <- as.numeric( unlist(signal) ) # the signal enter as a list
   decom <- wd(signal, filter.number= filtro, family= waveletn )
   
-  # j=1, ..., J
-  j1 <- 7  
+  # Parte 2: "denoising" o "alisamiento de la curva" 
   decom <- nullevels(decom, (j1-1):(nlevelsWT(decom)-1) ) # Shrinkage
   
   decom.th <- threshold(decom, levels = (j0-1):(j1-2), 
                         type = "soft", 
                         policy = "sure", 
                         by.level= TRUE) # thresholding
+  # Parte 3: reconstrucción de la curva \hat{f}(t)
+  hatf <- wr(decom.th, start.level = j0-1 ) # j0 start.level com ruido
   
-  hatf <- wr(decom.th, start.level = j1-1 ) # start.level com ruido
-  
+  # Parte 4: obtengo la lista de coeficientes.
   coef <- list()
   for (j in (j0-1):(j1-2)) {
     coef[[paste0("level", j+1)]] <- accessD(decom.th, level=j)
   }
   
   result <- list(hatf = hatf, coef = coef, decom.th = decom.th)
-  class(result) <- "mweth"
+  class(result) <- "hat_f"
   
   return(result)
 }
 
 ### Método de Impresión para la Clase S3
-print.mweth <- function(x, ...) {
+print.hat_f <- function(x, ...) {
   cat("Wavelet Based Curve Estimation\n")
   cat("================================\n")
-  cat("Hatf (Smoothed Signal):\n")
+  cat("Hatf (Funcion alisada):\n")
   print(summary(x$hatf))
   cat("\nDecomposed Threshold (decom.th):\n")
   print(summary(x$decom.th))
@@ -144,4 +149,117 @@ print.mweth <- function(x, ...) {
   print(lapply(x$coef, summary))
 }
 
+
+### Vectorized Wavelet based curve estimation with thresholding 
+
+v_hat_f <- function(signal = NULL, # es la curva observada con distorcion 
+                  filtro = NULL, #
+                  waveletn = NULL, #
+                  j0 = NULL, # 
+                  j1= NULL){
+  
+  # Parte 0:  Verificar si la longitud de la señal/curva es una potencia de 2
+  n <- length(signal[,1])
+  if (!log2(n) %% 1 == 0) {
+    warning("La longitud de la señal no es una potencia de 2, 
+             la función puede no funcionar correctamente.") 
+                          }
+  hats_v <- apply( signals0, 2, function(x) hat_f(signal = x, 
+                                                  filtro = filtro, 
+                                                  waveletn = waveletn, 
+                                                  j0 = j0, 
+                                                  j1= j1)$hatf)
+  
+  result <- list(hats_v = hats_v)
+  class(result) <- "hats_v"
+  
+  return(result)
+}
+
+
+### Método de Impresión para la Clase S3
+print.v_hat_f <- function(x, ...) {
+  cat("Wavelet Based Curve Estimation\n")
+  cat("================================\n")
+  cat("Hatf (Funcion alisada):\n")
+  print(summary(x$hatf))
+  }
+
+
 ```
+
+Aplicaciones de las funciones
+
+```r
+
+
+# Aplicación con datos somilados
+library(wavethresh)
+
+J <- 12
+M <- 2^{J} 
+tm <- (c(1:M))/ M
+epsilon <- 1
+replicas <- 1000
+s <- 1
+r <- 6
+ni <- 1 # 50, 100, 150, 200, 250, 
+n <- ni*r
+group.label0 <- unlist( lapply(1:r ,  function(x) rep(x, times = ni) ) )
+
+
+
+  
+doppl <-  DJ.EX(n=M, signal=1, rsnr=6, 
+                  noisy = FALSE,
+                  plotfn= FALSE)$doppler
+  
+signals0 <- sapply(1:n, function(x)  10 + epsilon*rnorm(M, 0, tm) )
+S <- as.data.frame(signals0) 
+# Grafico de los datos completos
+plot.ts(S, main = "Doopler function con ruido")  
+
+# Funcion a ser estimada
+plot.ts(doppl)
+# Funciones con ruido
+plot.ts(S[,1], main = "Doopler function") 
+
+
+# Aplicacion a una observacion (No vectorial)
+f <- hat_f(signal = S[,1], 
+                  filtro = 6, 
+                  waveletn = "DaubLeAsymm",
+                  j0 = 6,
+                  j1=10)
+
+print(f); 
+
+f$hatf
+
+plot.ts(S[,1], main = "Doopler function")  
+lines(f$hatf, 
+     type = "l", 
+     col="red",
+     lwd= 2)
+
+# Aplicación a los datos completos
+
+g <- v_hat_f(signal = S, 
+           filtro = 6, 
+           waveletn = "DaubLeAsymm",
+           j0 = 6,
+           j1=10)
+
+
+# Resumen
+summary(g$hats_v)
+
+# Grafico
+plot.ts(g$hats_v)
+
+
+```
+
+
+## Test de las funciones para una y varias curvas
+
