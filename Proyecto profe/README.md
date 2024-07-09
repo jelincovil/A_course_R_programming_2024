@@ -1,7 +1,6 @@
 ## Ejemplo de Proyecto
 
-# Titulo: función escalable para la estimación de curvas
-
+# Titulo: función vectorizada para la estimación de curvas
 
 ## Objetivo: 
 
@@ -175,10 +174,19 @@ print.v_hat_f <- function(x, ...) {
 
 ```
 
-## Aplicaciones de las funciones
+## Aplicaciones de las funciones *hat_f* y *v_hat_f*
+
+En la aplicación utilizaremos datos generados por la función *DJ.EX* de la libreria *wavethresh* para generar
+observaciones de la función *doppler* con y sin ruido presentadas en las siguientes figuras:
+
+<img src="https://raw.githubusercontent.com/jelincovil/A_course_R_programming_2024/main/Proyecto%20profe/doopler.png" width="800"> 
+
+<img src="https://raw.githubusercontent.com/jelincovil/A_course_R_programming_2024/main/Proyecto%20profe/doppler0.png" width="800"> 
+
+Las funciónes *hat_f* y *v_hat_f* tiene por objetivo tomar la función doopler **con ruido** como input y entregarme la estimación de esta
+**sin ruido**.
 
 ```r
-
 
 # Aplicación con datos somilados
 library(wavethresh)
@@ -247,6 +255,15 @@ plot.ts(g$hats_v)
 
 ```
 
+## Test de las funciones
 
-## Test de las funciones para una y varias curvas
+Pondremos a pruebas las funciones utilizando el paquete XXX realizando las siguientes pruebas:
+
+### Test 1
+
+### Test 2
+
+
+
+
 
