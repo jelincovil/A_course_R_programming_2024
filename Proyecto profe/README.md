@@ -1,4 +1,4 @@
-## Ejemplo de Proyecto
+### **Ejemplo de Proyecto de función de complejidad media o mayor**
 
 # Titulo: función vectorizada para la estimación de curvas
 
