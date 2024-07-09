@@ -4,8 +4,10 @@
 
 
 ## Objetivo: 
-   - Estimar la curva media sin ruido y la grafique.
-   - Estimar las curvas medias sin ruido y las grafique.
+
+   - Estimar y gráficar la curva media sin ruido.
+   - Estimar y gráficar un conjunto de  curvas medias sin ruido.
+
 ## Motivación empirica y teorica
 
 <img src="https://fr.mathworks.com/help/wavelet/ug/noisysig_ex.png" width="800"> 
@@ -28,6 +30,8 @@ $$
 $$
 
 ## Implementación
+
+Primero, comenzamos escrbiendo las funciones elementales que componen la dea base de la función objetivo.
 
 Funciones bases
 ```r
@@ -71,28 +75,11 @@ mweth <- function( signal = NULL,
   return(hatf)
 }
 
-
-## Funcion mejoradas
-
-# Empirical wavelet transformations
-vecd <- function(signal=NULL, 
-                 filtro= NULL, 
-                 waveletn= NULL, 
-                 j0= NULL){
-  
-  signal <- as.numeric( unlist(signal) ) # the signal enter as a list
-  decom <- wd(signal, filter.number= filtro, family= waveletn )
-  dj0 <- vector("list", j0 ) 
-  for ( j in  0:(j0-1) ) { dj0[[j+1]] <-  accessD(decom, level=j) }
-  vec <- unlist(dj0)
-  return(vec)
-  
-}
-
 ```
 
 
-Función objetivo mejorada
+## Función objetivo mejorada
+
 ```r
 
 ### Wavelet based curve estimation with thresholding 
@@ -188,7 +175,7 @@ print.v_hat_f <- function(x, ...) {
 
 ```
 
-Aplicaciones de las funciones
+## Aplicaciones de las funciones
 
 ```r
 
