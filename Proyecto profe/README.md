@@ -117,6 +117,7 @@ hat_f <- function(signal = NULL, # es la curva observada con distorcion
     coef[[paste0("level", j+1)]] <- accessD(decom.th, level=j)
   }
   
+   # Parte 5: guardo los outpouts como una lista
   result <- list(hatf = hatf, coef = coef, decom.th = decom.th)
   class(result) <- "hat_f"
   
