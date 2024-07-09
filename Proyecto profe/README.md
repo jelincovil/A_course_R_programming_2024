@@ -88,12 +88,13 @@ hat_f <- function(signal = NULL, # es la curva observada con distorcion
                   waveletn = NULL, #
                   j0 = NULL, # 
                   j1= NULL){
-  ## Nota: paquete necesario "wavethresh"
+  ## Nota: paquete necesario "wavethresh":ver https://cran.r-project.org/web/packages/wavethresh/index.html
   
   # Parte 0:  Verificar si la longitud de la señal/curva es una potencia de 2
   n <- length(signal)
   if (!log2(n) %% 1 == 0) {
-    warning("La longitud de la señal no es una potencia de 2, la función puede no funcionar correctamente.")
+    warning("La longitud de la señal no es una potencia de 2,
+             la función puede no funcionar correctamente.")
   }
   
   # Descompongo los datos mediante la funcion "wd"
