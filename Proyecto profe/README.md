@@ -1,8 +1,8 @@
-### **Ejemplo de Proyecto de función de complejidad media o mayor**
+# **Ejemplo de Proyecto de función de complejidad media o mayor**
 
-# Titulo: función vectorizada para la estimación de curvas
+## Titulo: función vectorizada para la estimación de curvas
 
-## Objetivo: 
+### Objetivo: 
 
    - Estimar y gráficar la curva media sin ruido.
    - Estimar y gráficar un conjunto de  curvas medias sin ruido.
@@ -30,7 +30,7 @@ $$
 
 ## Implementación
 
-Primero, comenzamos escrbiendo las funciones elementales que componen la dea base de la función objetivo.
+Primero, comenzamos escribiendo las funciones elementales que componen la idea base con la cual construiremos la la función mejorada.
 
 Funciones bases
 ```r
@@ -83,14 +83,14 @@ mweth <- function( signal = NULL,
 
 ### Wavelet based curve estimation with thresholding 
 
-hat_f <- function(signal = NULL, # es la curva observada con distorcion 
+hat_f <- function(signal = NULL, # es la curva observada con distorción 
                   filtro = NULL, #
                   waveletn = NULL, #
                   j0 = NULL, # 
                   j1= NULL){
-  ## Nota: paquete necesario "wavethresh":ver https://cran.r-project.org/web/packages/wavethresh/index.html
-  
-  # Parte 0:  Verificar si la longitud de la señal/curva es una potencia de 2
+
+## Nota: paquete necesario "wavethresh":ver https://cran.r-project.org/web/packages/wavethresh/index.html
+# Parte 0:  Verificar si la longitud de la señal/curva es una potencia de 2
   n <- length(signal)
   if (!log2(n) %% 1 == 0) {
     warning("La longitud de la señal no es una potencia de 2,
@@ -138,7 +138,7 @@ print.hat_f <- function(x, ...) {
 }
 
 
-### Vectorized Wavelet based curve estimation with thresholding 
+### Función en R vectorizada para estimar funciones via alisamiento
 
 v_hat_f <- function(signal = NULL, # es la curva observada con distorcion 
                   filtro = NULL, #
@@ -176,7 +176,7 @@ print.v_hat_f <- function(x, ...) {
 
 ```
 
-## Aplicaciones de las funciones *hat_f* y *v_hat_f*
+## Aplicaciones de las funciones `hat_f` y `v_hat_f`
 
 En la aplicación utilizaremos datos generados por la función *DJ.EX* de la libreria *wavethresh* para generar
 observaciones de la función *doppler* con y sin ruido presentadas en las siguientes figuras:
